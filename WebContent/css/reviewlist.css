@@ -1,0 +1,154 @@
+.list {
+	width: 100%;
+	border: none;
+	border-top: 3px solid #313f67;
+	border-bottom: 3px solid #313f67;
+	text-align: center;
+	border-collapse: collapse;
+	color: #555;
+}
+
+.list th {
+	font-weight: 300;
+	color: #313f67;
+	border-bottom: 3px solid #313f67;
+	padding: 5px;
+}
+
+.list td {
+	padding: 5px;
+	border-bottom: 1px solid #eee;
+}
+
+.list tr:hover {
+	background: #fafafa;
+	color: #313f67;
+}
+
+.list tr:first-child:hover {
+	background: white;
+	color: #555;
+}
+
+#subject {
+	min-width: 400px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.btn {
+	border: 1px solid #313f67;
+	background: #313f67;
+	border-radius: 5px;
+	cursor: pointer;
+	color: white;
+}
+
+#date {
+	color: #bbb;
+}
+
+.clear {
+	width: 100%;
+}
+
+.view {
+	width: 250px;
+	margin: 25px;
+	border-top: 2px solid #313f67;
+	border-bottom: 2px solid #313f67;
+	padding: 10px;
+	float: left;
+}
+
+.view li{
+	margin-bottom: 5px;
+}
+.view span {	
+	color: tomato;
+}
+
+.list {
+	width: 100%;
+	border: none;
+	border-top: 3px solid #313f67;
+	border-bottom: 3px solid #313f67;
+	text-align: center;
+	border-collapse: collapse;
+	color: #555;
+}
+
+.list th {
+	font-weight: 300;
+	color: #313f67;
+	border-bottom: 3px solid #313f67;
+	padding: 5px;
+}
+
+.list td {
+	padding: 5px;
+	border-bottom: 1px solid #eee;
+}
+
+.list tr:hover {
+	background: #fafafa;
+	color: #313f67;
+}
+
+.list tr:first-child:hover {
+	background: white;
+	color: #555;
+}
+
+#subject {
+	min-width: 400px;
+	text-align: left;
+	padding-left: 10px;
+}
+
+.btn {
+	border: 1px solid #313f67;
+	background: #313f67;
+	border-radius: 5px;
+	cursor: pointer;
+	color: white;
+}
+
+#date {
+	color: #bbb;
+}
+
+.clear {
+	width: 100%;
+}
+
+.view {
+	width: 250px;
+	margin: 25px;
+	border-top: 1px solid #313f67;
+	border-bottom: 1px solid #313f67;
+	padding: 10px;
+	float: left;
+}
+
+.view li {
+	margin-bottom: 5px;
+}
+
+/* tablet */
+@media screen and (min-width:769px) and (max-width:991px) {
+	.inner {
+		padding:0;
+		width:750px;
+	}
+	.submenu {
+		margin:
+	}
+}
+
+/* mobile */
+@media screen and (max-width:768px) {
+	.view{
+		margin:20px auto;
+	}
+}

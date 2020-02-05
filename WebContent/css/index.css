@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
+
+
+*{
+	margin:0;
+	padding:0;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.go{
+	text-decoration:none;
+	color:inherit;
+	cursor: pointer;
+}
+
+.go a:-webkit-any-link{
+	text-decoration:none;
+	color:inherit;
+	cursor: pointer;
+}
+
+li{
+	list-style-type:none;
+}
+
+/*clear*/
+.clear{
+	clear:both;
+}
+.clear:before, .clearf:after{
+    content: " ";
+    display: table;
+}
+
+body{
+	background:#313f67;
+	text-align: center;
+	color:white;
+}
+
+.content{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-280px;
+	margin-left:-175px;
+	width:350px;
+	height:558px;
+}
+
+h2{
+	font-size:40px;
+	font-weight: 300;
+	margin-bottom:30px;
+}
+
+h3 img{
+	max-width:300px;
+}
+
+h4{
+	background:white;
+	color:#313f67;
+	padding:15px 0;
+	margin:30px 0;
+	border-radius:20px;
+	font-size:25px;	
+}
+h4:hover{
+	background:#313f67;
+	color:white;
+}
+
+h5{
+	width:185px;
+	margin:0 auto;
+	border-bottom:1px solid white;
+	padding-bottom:5px;
+	font-size:18px;
+	font-weight:100;
+}
+
+h5:hover{
+	border-bottom:none;
+}
+
+/* tablet */
+@media screen and (min-width:769px) and (max-width:991px){
+	
+}
+
+/* mobile */
+@media screen and (max-width:768px){
+	.content{
+		top:0%;
+		margin-top:20px;
+	}
+	h2 {font-size: 35px;}
+	h3 img{max-width:200px;}
+	h4 {
+		font-size:22px;
+		width:250px;
+		border-radius:15px;
+		margin:25px auto;
+	}
+	h5{
+		font-size:16px;
+		width:150px;
+	}
+}

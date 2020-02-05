@@ -1,0 +1,38 @@
+#shoplist{
+   overflow:hidden;
+}
+
+.sh_list{
+   width:475px;
+   margin:25px;
+   padding:20px;
+   float:left;
+   border:1px solid #eee;
+   border-top:3px solid #313f67;
+   overflow:hidden;
+   cursor: pointer;
+}
+
+#list_pic, #list_info{
+   float:left;
+}
+
+#list_pic{
+   width:150px;
+   height:150px;
+}
+#list_pic img{
+   border-radius: 10px;
+}
+
+#list_info li{
+   margin-bottom:5px;
+}
+#list_info{
+   padding:20px 10px 5px 10px;
+   font-size:17px;
+   margin-left:20px;
+}
+#list_info span{
+   color:tomato;
+}

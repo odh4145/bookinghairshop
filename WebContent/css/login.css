@@ -1,0 +1,166 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css");
+
+section{
+   background: #313f67;
+   position:relative;
+}
+
+#login_user{
+   position:absolute;
+   top:50%; 
+   left:50%;
+   margin-left:-203px;
+   margin-top:-255px;
+   width:406px;
+   height:518px;
+   background: rgba(255,255,255,0.5);
+   border: 3px solid #fff;
+   border-radius: 10px;
+   width:400px;
+   
+   
+}
+#login_user h3{
+   background:#f6f6f6;
+   font-size: 20px;
+   color: black;
+   text-align: center;
+   width:200px;
+   padding:10px 0;
+   font-weight: 100;
+   margin: 0 auto;
+   margin-top:-25px;
+   z-index:10;
+   border: 1px solid #f2f2ff;
+   border-radius:10px;
+
+}
+
+#login_user ul{
+   width:224px;
+   margin: 0 auto;
+}
+
+#login_user li{
+   margin-bottom: 20px;
+}
+
+#login_user input{
+   width:200px;
+   padding: 10px; 
+   font-size: 15px;
+   border: 2px solid #e3e3e3;
+    border-radius: 15px;
+   
+}
+
+/*손님 로그인 사진*/
+#login_p{
+   display:block;
+   font-size:135px;
+   color:#808080;
+   margin: 0 auto;
+   cursor: inherit;
+   width:135px;
+   
+}
+
+#btn{
+   width:224px !important;
+   background:#313f67;
+   color: white;
+   border: 1px solid #313f67;
+   
+}
+#btn:hover{
+   background:#e3e3e3;
+   color:#313f67;
+}
+
+#join{
+   display:block;
+   width:35px;
+   text-align: center;
+   color: white;
+   border-bottom: 1px solid white;
+   margin : 0 auto 10px auto;
+}
+   
+#join:hover{
+   color: #313f67;
+   border-color: #313f67;
+}
+
+
+/*매장 로그인 css */
+
+#login_shop{
+   position:absolute;
+   top:50%; 
+   left:50%;
+   margin-left:-203px;
+   margin-top:-255px;
+   width:406px;
+   height:518px;
+   background: rgba(255,255,255,0.5);
+   border: 3px solid #fff;
+   border-radius: 10px;
+   width:400px;
+   
+   
+}
+#login_shop h3{
+   background:#f6f6f6;
+   font-size: 20px;
+   color: black;
+   text-align: center;
+   width:200px;
+   padding:10px 0;
+   font-weight: 100;
+   margin: 0 auto;
+   margin-top:-25px;
+   z-index:10;
+   border: 1px solid #f2f2ff;
+   border-radius:10px;
+
+}
+
+#login_shop ul{
+   width:224px;
+   margin: 0 auto;
+}
+
+#login_shop li{
+   margin-bottom: 20px;
+}
+
+#login_shop input{
+   width:200px;
+   padding: 10px; 
+   font-size: 15px;
+   border: 2px solid #e3e3e3;
+    border-radius: 15px;
+   
+}
+
+/*매장 로그인 사진*/
+#login_p2{
+   display:block;
+   font-size:135px;
+   color:#808080;
+   margin: 0 auto;
+   cursor: inherit;
+   width:135px;
+}
+
+/* tablet */
+@media screen and (min-width:769px) and (max-width:991px){
+   
+}
+
+/* mobile */
+@media screen and (max-width:768px){
+   #login_shop{
+      width:350px;
+   }
+}

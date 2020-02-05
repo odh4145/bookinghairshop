@@ -1,0 +1,155 @@
+section {
+	background: #313f67;
+	position: relative;
+	min-height: 900px;
+}
+
+#join_user {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -203px;
+	margin-top: -250px;
+	width: 406px;
+	height: 500px;
+	background: white;
+	width: 400px;
+}
+
+#join_user h3 {
+	font-size: 30px;
+	color: black;
+	text-align: center;
+	width: 200px;
+	padding: 10px 0;
+	font-weight: 100;
+	margin: 0 auto;
+	font-weight: bold;
+}
+
+#join_user hr {
+	border: 0;
+	border-top: 3px solid #e5e5e5;
+	margin: 0 30px 20px;
+}
+
+#join_user ul {
+	width: 224px;
+	margin: 0 auto;
+}
+
+#join_user li {
+	margin: 30px 0;
+}
+
+#join_user input {
+	width: 200px;
+	padding: 10px;
+	font-size: 15px;
+	border: 2px solid #e3e3e3;
+	border-radius: 15px;
+}
+
+#btn {
+	position: absolute; 
+	width : 150px !important;
+	background: #313f67;
+	color: white;
+	border: 1px solid #313f67;
+	width: 150px !important;
+	bottom:5px;
+	right:8px;
+}
+
+#btn:hover {
+	background: #e3e3e3;
+	color: #313f67;
+}
+
+/*매장 회원가입*/
+#join_shop {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -300px;
+	margin-top: -325px;
+	width: 600px;
+	height: 650px;
+	background: white;
+	text-align: center;
+}
+
+#join_shop h3 {
+	font-size: 25px;
+	color: black;
+	text-align: center;
+	width: 200px;
+	padding: 10px 0;
+	font-weight: 100;
+	margin: 0 auto;
+	font-weight: bold;
+}
+
+#join_shop hr {
+	border: 0;
+	border-top: 3px solid #e5e5e5;
+	margin: 0 30px 20px;
+}
+
+#join_shop input {
+	width: 300px;
+	padding: 5px;
+	font-size: 15px;
+	border: 2px solid #e3e3e3;
+	border-radius: 15px;
+	margin-bottom:20px;
+}
+
+#btn2 {
+	width: 100px !important;
+	background: #313f67;
+	color: white;
+	border: 1px solid #313f67;
+}
+
+#btn2:hover {
+	background: #e3e3e3;
+	color: #313f67;
+}
+
+#join_shop sh_location {
+	width: 400px;
+	padding: 5px;
+	font-size: 15px;
+	border: 2px solid #e3e3e3;
+	border-radius: 15px;
+	margin: 5px 0;
+}
+
+#sh_postcode {
+	width: 200px !important
+}
+
+#chklocation {
+	width: 314px !important;
+}
+
+/* tablet */
+@media screen and (min-width:769px) and (max-width:991px) {
+	#login_shop {
+		margin-left: -200px;
+		margin-top: -350px;
+		width: 400px;
+		height: 700px;
+	}
+}
+
+/* mobile */
+@media screen and (max-width:768px) {
+	#login_shop {
+		margin-left: -200px;
+		margin-top: -350px;
+		width: 400px;
+		height: 700px;
+	}
+}

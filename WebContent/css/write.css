@@ -1,0 +1,54 @@
+form{
+	color:#555;
+}
+
+form h4{
+	font-size:22px;
+	border-bottom:1px solid #313f67;
+	padding-bottom:15px;
+}
+
+form h5{
+	margin-top:15px;
+	margin-bottom:10px;
+	font-size:16px;
+	color:#aaa;
+	font-weight:300;
+}
+
+form select{
+	width:80px;
+}
+
+form textarea{
+	border:1px solid #313f67;
+	border-radius: 10px;
+	width:100%;
+	min-height:80px;
+}
+
+form li{
+	margin-bottom:10px;
+}
+
+.btnbox{
+	overflow:hidden;
+	width:230px;
+	margin:0 auto;
+	margin-top:20px;
+}
+
+.btnbox input, .btnbox button{
+	float:left;
+	width:100px;
+	padding:5px;
+	text-align:center;
+	background: #313f67;
+	border:1px solid #313f67;
+	border-radius: 10px;
+	cursor: pointer;
+	color:white;
+	font-size: 18px;
+	font-weight: 800;
+	margin:5px;
+}

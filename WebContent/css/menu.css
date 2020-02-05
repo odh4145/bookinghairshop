@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+KR&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css");
+
+*{
+   margin:0;
+   padding:0;
+   font-family: 'Noto Sans KR', sans-serif;
+}
+
+a{
+   text-decoration:none;
+   color:inherit;
+   cursor: pointer;
+}
+
+li{
+   list-style-type:none;
+}
+
+/*clear*/
+.clear{
+   clear:both;
+}
+.clear:before, .clearf:after{
+    content: " ";
+    display: table;
+}
+
+/* 상단 메뉴 */
+header{
+   border-bottom:1px solid #bbb;
+   height:50px;
+   background:white;
+   color:#bbb;
+   position:relative;
+   z-index: 99;
+}
+
+#top_menu{
+   width:1200px;
+   height:50px;
+   margin:0 auto;
+   position:relative;
+   padding-top:8px;
+}
+#top_menu li{
+   float:left;
+   font-size:17px;
+   color:#bbb;
+}
+
+#menu_list li{
+   text-align:center;
+   margin-top:2px;
+   margin-left:170px;
+}
+#menu_list li a:hover{
+   padding-bottom:5px;
+   color:#313f67;
+   font-weight:600;
+   border-bottom:2px solid #313f67;
+}
+
+.logo, #logo{
+   margin-left:10px !important;
+   color:#313f67;
+   font-size:20px;
+}
+.logo a, #logo a{
+   color:#313f67;
+   font-size:20px;
+   display:block;
+   width:100%;
+}
+
+.logo span, #logo span{
+   font-weight:800;
+}
+
+#login {
+   position:absolute;
+   width:100px;
+   top:5px;
+   right:75px;
+}
+#login a{
+   text-align:center;
+   font-weight:600;
+   display:block;
+   width:100%;
+   margin-left:50px;
+   background: #313f67;
+   color:white;
+   padding:3px 0;
+   border:2px solid #313f67;
+   border-radius:20px;
+}
+
+#login a:hover{
+   background:white;
+   color:#313f67;
+}
+
+/* 섹션 */
+section{
+   background: #fcfcfc;
+   min-height:850px;
+}
+
+.content{
+   position:relative;
+   width:1200px;
+   min-height:700px;
+   max-width:1200px;
+   margin:0 auto;
+   margn-bottom:30px;
+   background: white;
+   box-shadow: 10px 0px 20px 2px #ddd, -10px 0px 20px 2px #ddd;
+   overflow:hidden;
+}
+
+#content_title{
+   text-align:center;
+   padding:5px 0;
+   font-size:25px;
+   color:#f6b798;
+   background:rgba(252,252,252,0.8);
+   z-index:90;
+}
+
+.scroll{
+   position:fixed;
+   width:1200px;
+   top:0;
+}
+
+.inbox{
+   padding:30px !important;
+   overflow:hidden;
+}
+
+/* 화살표 버튼 */
+#go_top{
+   z-index:90;
+}
+#go_top i{
+   color:#bbb;
+   font-size:40px;
+}
+
+.inner{
+   padding:30px;
+}
+
+/* 모바일버튼 */
+#btn_menu{
+   display:none;
+   position:absolute;
+   right:0;
+   color:#313f67;
+   font-size:25px;
+   padding:10px;
+   top:-6px;
+}
+
+#mo_menu{
+   position:absolute;
+   right:0;
+   top:50px;
+   width:150px;
+   display:none;
+}
+#mo_menu li{
+   background: white;
+   color:#313f67;
+   font-size: 16px;
+   text-align: center;
+   padding:10px;
+}
+#mo_menu li:hover{
+   background: #e4e4e4;
+}
+
+#mo_sub{
+   display:none;
+}
+#mo_sub li{
+   background:#eee;
+}
+
+/* tablet */
+@media screen and (min-width:769px) and (max-width:991px){
+   .content{width:100%;}
+   #content_title{width:100%}
+   #top_menu{width:100%;}
+   #menu_list li{margin-left:100px;}
+}
+
+/* mobile */
+@media screen and (max-width:768px){
+   #login, #menu_list{
+      display:none;
+   }
+   .content{width:100%;}
+   #content_title{width:100%}
+   #top_menu{width:100%;}
+   #btn_menu{
+      display:block;
+   }
+}

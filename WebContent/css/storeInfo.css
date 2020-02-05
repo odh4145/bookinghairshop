@@ -1,0 +1,111 @@
+.store_pic{
+	position:relative;
+	overflow:hidden;
+	z-index:1;
+}
+.store_pic img{
+	float:left;
+	width:400px;
+	height:350px;
+}
+
+.store_info{
+	position:relative;
+	width:1100px;
+	top:-50px;
+	background:white;
+	margin:0 auto;
+	border:1px solid #ddd;
+	border-top:3px solid #313f67;
+	z-index: 2;
+	color:#444;
+}
+
+.store_info h2{
+	font-size:40px;
+	margin:30px 0;
+	text-align: center;
+}
+
+#book_review{
+	text-align: center;
+	width:201px;
+	margin:0 auto 30px auto;
+	overflow:hidden;
+}
+#book_review a{
+	color:#f6b798;
+	width:100px;
+	float:left;
+	font-size:15px;
+	font-weight:600;
+}
+#book_review i{
+	font-size: 35px;
+	margin-bottom:5px;
+}
+
+.information{
+	overflow:hidden;
+	width:1000px;
+	margin:0 auto;
+	border-top:1px solid #f2f2f2;
+	padding:15px;
+	color:#666;
+	font-size:17px;
+}
+.information h3{
+	font-size:20px;
+}
+.information h4{
+	font-size: 15px;
+	color:#bbb;
+	font-weight:400;
+	margin-bottom:20px;
+}
+.information p {
+	line-height: 40px;
+}
+.information p i{
+	margin-right:10px;
+}
+
+.price_info{
+	margin-right:20px;
+	position:relative;
+	width:100px;
+	height:100px;
+	float:left;
+	border:2px solid #f6b798;
+	border-radius:50%;
+	text-align: center;
+	vertical-align: middle;
+}
+.price_info span{
+	color:#bbb;
+	font-size:14px;
+}
+.price_info li{
+	margin-top:10px;
+}
+
+.price_inf li:last-child, .designer li:last-child{
+	margin-right:0;
+}
+
+.designer{
+	float:left;
+	margin:20px 30px 0 0;
+	text-align:center;
+}
+
+.designer img{
+	width:150px;
+	height:150px;
+	border-radius:50%;
+}
+
+.designer_name{
+	font-weight:800;
+}
+

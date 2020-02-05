@@ -1,0 +1,94 @@
+
+#changeinfo {
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-180px;
+	margin-left:-300px;
+	width:400px;
+	height: 350px;
+	background: #313f67;
+	border: 3px solid #313f67;
+	border-radius: 10px;
+	width: 400px;
+}
+
+#changeinfo h3 {
+	background: #f6f6f6;
+	font-size: 20px;
+	color: black;
+	text-align: center;
+	width: 200px;
+	padding: 10px 0;
+	font-weight: 100;
+	margin: 0 auto;
+	margin-top: -25px;
+	z-index: 10;
+	border: 1px solid #f2f2ff;
+	border-radius: 10px;
+}
+
+#changeinfo hr {
+	border: none;
+	border-top : 1px solid #e5e5e5;
+	margin: 20px;
+}
+
+#changeinfo ul {
+	width: 224px;
+	margin: 0 auto;
+	margin-top:40px;
+}
+
+#changeinfo li {
+	margin-bottom: 20px;
+}
+
+#changeinfo input {
+	width: 200px;
+	padding: 10px;
+	font-size: 15px;
+	border: 2px solid #e3e3e3;
+	border-radius: 15px;
+}
+
+#changeinfo a {
+	display: block;
+	width: 59px;
+	margin: 0 auto;
+	margin-top:40px;
+	text-align: center;
+	color: white;
+}
+
+#changeinfo a:hover {
+	border-bottom: 1px solid white;
+}
+
+#btn {
+	width: 224px !important;
+	background: white;
+	color: #313f67;
+	border: 1px solid #313f67;
+	font-weight: 800;
+}
+
+#btn:hover {
+	background: #e3e3e3;
+	color: #313f67;
+}
+
+/* tablet */
+@media screen and (min-width:769px) and (max-width:991px) {
+}
+
+/* mobile */
+@media screen and (max-width:768px) {
+	#changeinfo{
+		position:relative;
+		top:0;
+		left:0;
+		margin:0 auto;
+		margin-top:30px;
+	}
+}

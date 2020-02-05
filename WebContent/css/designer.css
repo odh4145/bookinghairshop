@@ -1,0 +1,36 @@
+.designer{
+	float:left;
+	margin-right:40px;
+	border:1px solid #eee;
+	padding:15px;
+}
+.designer img{
+	width:150px;
+	height:150px;
+	border-radius:50%;
+}
+.designer input{
+	font-size:15px;
+	width:160px;
+	margin-bottom:10px;
+	padding:5px;
+}
+
+.insert_dpic{
+	width:200px !important;
+}
+
+.update_d{
+	margin:0 auto;
+	width:200px !important;
+	height:30px;
+	font-weight:800;
+	background:#313f67;
+	border:1px solid #313f67;
+	color:white;
+}
+
+#imgbox{
+	width:150px;
+	margin:0 auto;
+}

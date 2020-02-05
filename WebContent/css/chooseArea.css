@@ -1,0 +1,53 @@
+.innerbox{
+   padding:50px;
+   margin-bottom: 50px;
+}
+.choose{
+   width:100%;
+   overflow: hidden;
+}
+
+.where{
+   float:left;
+   display:block;
+   border:1px solid #eee;
+   border-top:3px solid #313f67;
+   text-align:center;
+   width:230px;
+   height:80px;
+   margin:20px;
+   font-size:28px;
+   line-height:80px;
+   color:#313f67;
+}
+
+.where:hover{
+   background: #313f67;
+   color:white;
+}
+
+#line{
+   width:1000px;
+   margin:20px auto;
+   border:none;
+   border-top:1px solid #eee;
+}
+
+/* tablet */
+@media screen and (min-width:769px) and (max-width:991px) {
+	.innerbox{
+		padding:0;
+		margin-bottom:20px;
+	}
+}
+
+/* mobile */
+@media screen and (max-width:768px) {
+.innerbox{
+		padding:0;
+		margin-bottom:20px;
+	}
+	.where{
+		width:90%;
+	}
+}
