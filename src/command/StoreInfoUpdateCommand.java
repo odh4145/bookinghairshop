@@ -16,7 +16,7 @@ public class StoreInfoUpdateCommand implements Command {
 		
 		String sh_telephone = request.getParameter("sh_telephone");
 		String sh_location = request.getParameter("sh_location");
-		String sh_hello = request.getParameter("sh_hello");
+		String sh_hello = request.getParameter("sh_hello").trim();
 		int sh_starttime = Integer.parseInt(request.getParameter("sh_starttime"));		
 		int sh_endtime = Integer.parseInt(request.getParameter("sh_endtime"));
 		int sh_uid = Integer.parseInt(request.getParameter("sh_uid"));

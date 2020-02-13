@@ -241,23 +241,21 @@ function parseJSON(jsonObj){
 							<input type="text" name="sh_telephone" value="${info[0].sh_telephone }" /> 
 							<span>* 번호는 - 포함하여 적어주세요.</span>
 						</li>
+						<li>주소 </li>
 						<li>
-							주소 <br>
-							
-							<input class="address" id="sh_roadAddr" type="text" name="sh_roadAddr"  value="${info[0].sh_location } "><br>
-							<input id="btn2" type="button" onclick="sh_execDaumPostcode()" value="FIND">
-							<input id="sh_detailAddress" type="text" name="sh_detailAddress" placeholder="ADDRESS LINE 2"><br>
-							<input id="chklocation" type="button" value="Address Check "><br>
-				
+							<input id="btn2" class="addressBtn" type="button" onclick="sh_execDaumPostcode()" value="주소찾기">
+							<input class="addressBtn" id="chklocation" type="button" value="주소확정">
+						</li>
+						<li>
+							<input class="address" id="sh_roadAddr" type="text" name="sh_roadAddr"  value="${info[0].sh_location } ">		
+							<input id="sh_detailAddress" type="text" name="sh_detailAddress" placeholder="상세주소"><br>
 							<input id="sh_location" type="hidden" name="sh_location" value="${info[0].sh_location } ">
 							<input id="sh_location_lat" type="hidden" name="sh_location_lat" placeholder="위도"value="${info[0].sh_location_lat } ">
-							<input id="sh_location_lng" type="hidden" name="sh_location_lng" placeholder="경도"value="${info[0].sh_location_lng } ">
-							
-							
+							<input id="sh_location_lng" type="hidden" name="sh_location_lng" placeholder="경도"value="${info[0].sh_location_lng } ">		
 						</li>
 						<li>시간
-							<input class="time" type="text" name="sh_starttime" value="${info[0].sh_starttime }" /> - 
-							<input class="time" type="text" name="sh_endtime" value="${info[0].sh_endtime }" />
+							<input class="time" type="text" name="sh_starttime" value="${info[0].sh_starttime }" /> : 00 - 
+							<input class="time" type="text" name="sh_endtime" value="${info[0].sh_endtime }" /> : 00
 						</li>
 						<li>인사말<br>
 							<textarea class="himessage" name="sh_hello">${info[0].sh_hello }"

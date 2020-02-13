@@ -110,7 +110,7 @@ section{
 .content{
    position:relative;
    width:1200px;
-   min-height:700px;
+   min-height:600px;
    max-width:1200px;
    margin:0 auto;
    margn-bottom:30px;
@@ -142,6 +142,9 @@ section{
 /* 화살표 버튼 */
 #go_top{
    z-index:90;
+   position:absolute;
+   right:5px;
+   bottom:5px;
 }
 #go_top i{
    color:#bbb;
