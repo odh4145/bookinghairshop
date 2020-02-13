@@ -228,7 +228,7 @@ th, td {
                         var userlng = pos.lng;
 
                         
-                        var url = "http://localhost:8090/hairshop/shopSelect.bbq?lat="
+                        var url = "http://localhost:8090/portfolio/shopSelect.bbq?lat="
                               + userlat + "&lng=" + userlng;
 
                         $.ajax({
@@ -299,7 +299,7 @@ th, td {
                                userlng = jsonObj.results[0].geometry.location.lng;
                        
                                
-                               var url = "http://localhost:8090/hairshop/shop.bbq?lat="
+                               var url = "http://localhost:8090/portfolio/shop.bbq?lat="
                                  + userlat + "&lng=" + userlng;
                               //alert(url);
                               
