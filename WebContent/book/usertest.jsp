@@ -108,7 +108,7 @@
 								<li>매장이름 : ${book.sh_name}</li>
 								<li>위치 : ${book.sh_location}</li>
 								<li>매장번호 : ${book.sh_telephone}</li>
-								<form action="delete.book.bbq">
+								<form action="delete.book.bbq" class="formBtn">
                            <input type="hidden" name="bo_uid" value="${book.bo_uid }">
                            <input type="hidden" name="use_uid" value="${book.use_uid }">
                            <c:if test="${book.bo_stat == 1 || book.bo_stat == 2}">

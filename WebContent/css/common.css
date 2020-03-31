@@ -51,3 +51,7 @@ ul.pagination a.active {
 }
 
 ul.pagination a:hover:not(.active) {background-color: #eee;}
+
+.formBtn{
+	margin:15px auto;
+}

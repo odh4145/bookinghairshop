@@ -228,7 +228,7 @@ th, td {
                         var userlng = pos.lng;
 
                         
-                        var url = "http://localhost:8090/portfolio/shopSelect.bbq?lat="
+                        var url = "${pageContext.request.contextPath}/shopSelect.bbq?lat="
                               + userlat + "&lng=" + userlng;
 
                         $.ajax({
@@ -299,7 +299,7 @@ th, td {
                                userlng = jsonObj.results[0].geometry.location.lng;
                        
                                
-                               var url = "http://localhost:8090/portfolio/shop.bbq?lat="
+                               var url = "${pageContext.request.contextPath}/shop.bbq?lat="
                                  + userlat + "&lng=" + userlng;
                               //alert(url);
                               
@@ -358,7 +358,6 @@ th, td {
       </div>
    </section>
 
-   <section></section>
 
    <%--
    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

@@ -40,7 +40,7 @@
 								infoWindow.open(map);
 								map.setCenter(pos);
 
-								var url = "http://localhost:8090/hairshop/shop.loc?lat="
+								var url = "${pageContext.request.contextPath}/shop.loc?lat="
 										+ userlat + "&lng=" + userlng;
 
 								$.ajax({

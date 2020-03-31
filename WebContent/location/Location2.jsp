@@ -136,7 +136,7 @@ th,td {
             var userlat = pos.lat;
             var userlng = pos.lng;
             
-            var url = "http://localhost:8090/portfolio/shop.bbq?lat="
+            var url = "${pageContext.request.contextPath}/shop.bbq?lat="
                   + userlat + "&lng=" + userlng;
 
             $.ajax({

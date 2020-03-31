@@ -105,7 +105,7 @@
 				var userlat = pos.lat;
 				var userlng = pos.lng;
 				
-				var url = "http://localhost:8082/hairshop/shop.loc?lat="
+				var url = "${pageContext.request.contextPath}/shop.loc?lat="
 						+ userlat + "&lng=" + userlng;
 
 				$.ajax({
