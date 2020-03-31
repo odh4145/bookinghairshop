@@ -23,6 +23,8 @@
 }
 #list_pic img{
    border-radius: 10px;
+   width:150px;
+   height:150px;
 }
 
 #list_info li{

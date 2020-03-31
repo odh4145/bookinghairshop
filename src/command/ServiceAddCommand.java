@@ -14,14 +14,10 @@ public class ServiceAddCommand implements Command {
 		int cnt = 0;
 		ServiceDAO dao = new ServiceDAO();
 		
-		try {
-			
-			String ser_name = "이름";
-			int ser_price = 0;
-			int ser_time = 0;
+		try {		
 			int sh_uid = Integer.parseInt(request.getParameter("sh_uid"));
 			dao.toString();
-			cnt = dao.insert(ser_name, ser_price, ser_time, sh_uid);
+			cnt = dao.insert(sh_uid);
 			
 			request.setAttribute("service", cnt);
 		} catch (SQLException e) {

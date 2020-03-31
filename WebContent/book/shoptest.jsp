@@ -13,7 +13,7 @@
 <link href="../css/booklist.css" rel="stylesheet" type="text/css">
 <link href="../css/common.css" rel="stylesheet" type="text/css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="CSS/common.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css" />
 <script src="https://kit.fontawesome.com/bb29575d31.js"></script>
 </head>
 
@@ -99,7 +99,7 @@
 							<li class="test">지난 예약입니다.</li>
 						</c:if>
 						
-						<li>${book_sh.bo_time} ${book_sh.bo_service}</li>
+						<li>${book_sh.bo_time}</li>
 						<div class="btnbox">
 						<c:if test="${book_sh.bo_stat == 1 }">
 							<form action="bookShopRadio.jsp">

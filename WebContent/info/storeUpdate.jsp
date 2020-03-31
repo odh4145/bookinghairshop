@@ -23,6 +23,10 @@
 <!-- css파일 link -->
 <link href="../css/menu.css" rel="stylesheet" type="text/css">
 <link href="../css/storeupdate.css" rel="stylesheet" type="text/css">
+
+<!-- javascript 링크 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/public.js" type="text/javascript"></script>
 </head>
 
 <script>
@@ -37,6 +41,20 @@ function infoSubmit(frm) {
 		alert("빈 칸이 존재합니다.");
 		return false;
 	}
+	return true;
+}
+
+function infoSubmit() {
+	var frm = this.closet("form");
+	var ser_name = frm.ser_name.value.trim();
+	var ser_price = frm.ser_price.value.trim();
+	var ser_time = frm.ser_time.value.trim();
+	
+	if (ser_name == "" && ser_price == "" && ser_time == "") {
+		alert("빈 칸이 존재합니다.");
+		return false;
+	}
+	
 	return true;
 }
 </script>
@@ -225,9 +243,30 @@ function parseJSON(jsonObj){
 				<div class="inner">
 					<div class="info">	
 						<div class="store_pic">
-							<img src="${info[0].sh_picture1 }" />
-							<img src="${info[0].sh_picture2 }" />
-							<img src="${info[0].sh_picture3 }" />
+							<c:choose>
+								<c:when test="${info[0].sh_picture1 == '0' }">
+									<img src="http://placehold.it/300x300">
+								</c:when>
+								<c:otherwise>
+									<img src="${pageContext.request.contextPath}/img/${info[0].sh_picture1}" />
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${info[0].sh_picture2 == '0' }">
+									<img src="http://placehold.it/300x300">
+								</c:when>
+								<c:otherwise>
+									<img src="${pageContext.request.contextPath}/img/${info[0].sh_picture2}" />
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
+								<c:when test="${info[0].sh_picture3 == '0' }">
+									<img src="http://placehold.it/300x300">
+								</c:when>
+								<c:otherwise>
+									<img src="${pageContext.request.contextPath}/img/${info[0].sh_picture3}" />
+								</c:otherwise>
+							</c:choose>
 						</div>
 					<div class="store_info">			
 					<h2>${info[0].sh_name }</h2>
@@ -237,28 +276,28 @@ function parseJSON(jsonObj){
 					<ul class="information">
 					<h3>기본정보</h3>
 						<input type="hidden" name="sh_uid" value="${info[0].sh_uid }">
-						<li>번호 
-							<input type="text" name="sh_telephone" value="${info[0].sh_telephone }" /> 
+						<li>매장번호<br>
+							<input type="text" name="sh_telephone" value="${info[0].sh_telephone }" required/> 
 							<span>* 번호는 - 포함하여 적어주세요.</span>
 						</li>
-						<li>주소 </li>
+						<li>매장주소</li>
 						<li>
-							<input id="btn2" class="addressBtn" type="button" onclick="sh_execDaumPostcode()" value="주소찾기">
+							<input id="btn2" class="addressBtn" type="button" onclick="sh_execDaumPostcode()" value="주소찾기" >
 							<input class="addressBtn" id="chklocation" type="button" value="주소확정">
 						</li>
 						<li>
-							<input class="address" id="sh_roadAddr" type="text" name="sh_roadAddr"  value="${info[0].sh_location } ">		
-							<input id="sh_detailAddress" type="text" name="sh_detailAddress" placeholder="상세주소"><br>
+							<input class="address" id="sh_roadAddr" type="text" name="sh_roadAddr"  value="${info[0].sh_location }" required>		
+							<input id="sh_detailAddress" type="text" name="sh_detailAddress" placeholder="상세주소" required><br>
 							<input id="sh_location" type="hidden" name="sh_location" value="${info[0].sh_location } ">
 							<input id="sh_location_lat" type="hidden" name="sh_location_lat" placeholder="위도"value="${info[0].sh_location_lat } ">
 							<input id="sh_location_lng" type="hidden" name="sh_location_lng" placeholder="경도"value="${info[0].sh_location_lng } ">		
 						</li>
 						<li>시간
-							<input class="time" type="text" name="sh_starttime" value="${info[0].sh_starttime }" /> : 00 - 
-							<input class="time" type="text" name="sh_endtime" value="${info[0].sh_endtime }" /> : 00
+							<input class="time" type="text" name="sh_starttime" value="${info[0].sh_starttime }" required/> : 00 - 
+							<input class="time" type="text" name="sh_endtime" value="${info[0].sh_endtime }" required/> : 00
 						</li>
 						<li>인사말<br>
-							<textarea class="himessage" name="sh_hello">${info[0].sh_hello }"
+							<textarea class="himessage" name="sh_hello">${info[0].sh_hello}
 							</textarea>
 						</li>
 						<input class="update" type="submit" value="기본정보수정" />
@@ -274,18 +313,32 @@ function parseJSON(jsonObj){
 							<ul class="service_info">
 								<input type="hidden" name="sh_uid" value="${dto1.sh_uid}"/>
 								<input type="hidden" name="ser_uid" value="${dto1.ser_uid}">
-								<li>이름 <input type="text" name="ser_name" value="${dto1.ser_name }" /></li>
-								<li>가격 <input type="text" name="ser_price" value="${dto1.ser_price }" /></li>
-								<li>시간 <input class="time" type="text" name="ser_time" value="${dto1.ser_time }" /></li>
+								<li>이름 <input type="text" name="ser_name" value="${dto1.ser_name }"/></li>
+								<c:choose>
+									<c:when test="${dto1.ser_price == 0}">
+										<li>가격 <input type="text" name="ser_price" value=""/></li>
+									</c:when>
+									<c:otherwise>
+										<li>가격 <input type="text" name="ser_price" value="${dto1.ser_price }"/></li>
+									</c:otherwise>
+								</c:choose>	
+								<c:choose>
+									<c:when test="${dto1.ser_time == 0}">
+										<li>시간 <input class="time" type="text" name="ser_time" value=""/></li>
+									</c:when>
+									<c:otherwise>
+										<li>시간 <input class="time" type="text" name="ser_time" value="${dto1.ser_time }"/></li>
+									</c:otherwise>
+								</c:choose>	
 								<div class="btnbox">
-									<input class="p_btn" type="submit" value="수정" formaction="serviceUpdate.bbq"/>
+									<input class="p_btn" type="submit" value="수정" onsubmit="retrun serUpdate()" formaction="serviceUpdate.bbq"/>
 									<input id="go_delete" class="p_btn" type="submit" value="삭제" formaction="serviceDelete.bbq"/>
 								</div>
 							</ul>																	
 						</form>
 					</c:forEach>			
 					
-					<input class="update" type="button"  value="스타일추가"
+					<input class="update" type="button" value="스타일추가"
 						onClick="location.href='serviceAdd.bbq?sh_uid=${param.sh_uid}'" />
 				</div>									
 				
@@ -297,12 +350,26 @@ function parseJSON(jsonObj){
 							<ul class="designer">
 								<input type="hidden" name="sh_uid" value="${dto2.sh_uid }" />
 								<input type="hidden" name="de_uid" value="${dto2.de_uid }" />
-								<li id="imgbox"><img src="${dto2.de_picture }"></li>							
-								<li>이름 <input type="text" name="de_name" value="${dto2.de_name }" /></li>
-								<li>직책 <input type="text" name="de_position" value="${dto2.de_position }" /></li>
-								<li>경력 <input type="text" name="de_career" value="${dto2.de_career }" /></li>
+								<c:choose>
+									<c:when test="${dto2.de_picture == '0' }">
+										<li id="imgbox"><img src="http://placehold.it/150x150"></li>
+									</c:when>
+									<c:otherwise>
+										<li id="imgbox"><img src="${pageContext.request.contextPath}/img/${dto2.de_picture }"></li>
+									</c:otherwise>
+								</c:choose>					
+								<li>이름 <input type="text" name="de_name" value="${dto2.de_name }"/></li>
+								<li>직책 <input type="text" name="de_position" value="${dto2.de_position }"></li>
+								<c:choose>
+									<c:when test="${dto2.de_career == 0}">
+										<li>경력 <input type="text" name="de_career" value=""></li>
+									</c:when>
+									<c:otherwise>
+										<li>경력 <input type="text" name="de_career" value="${dto2.de_career}"></li>
+									</c:otherwise>
+								</c:choose>		
 								<li>전공 <input type="text" name="de_major" value="${dto2.de_major }"></li>
-								<li><input class="insert_dpic" type="file" name="de_picture" size=40></li>
+								<li><input class="insert_dpic" type="file" name="de_picture" size=40 accept="image/*"></li>
 								<div class="btnbox">
 									<input class="p_btn d_btn" type="submit" value="수정" formaction="designerUpdate.bbq"/>
 									<input id="go_delete" class="p_btn d_btn" type="submit" value="삭제" formaction="designerDelete.bbq"/>
@@ -323,13 +390,7 @@ function parseJSON(jsonObj){
 	</div>
 </div>
 </section>
-
-<!-- javascript 링크 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../js/public.js" type="text/javascript"></script>
 </body>
-</html>
-	
-	</c:when>
-
+</html>	
+</c:when>
 </c:choose>

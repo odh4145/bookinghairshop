@@ -17,162 +17,166 @@ DROP TABLE IF EXISTS USER;
 
 CREATE TABLE BOOK
 (
-   bo_uid int NOT NULL AUTO_INCREMENT,
-   bo_service varchar(80) NOT NULL,
-   bo_stat int NOT NULL DEFAULT 1,CHECK(bo_stat>=1 and bo_stat<=3),
-   bo_time datetime NOT NULL default now(),
-   bo_comment varchar(80),
-   use_uid int,
-   sh_uid int,
-   PRIMARY KEY (bo_uid)
+	bo_uid int NOT NULL AUTO_INCREMENT,
+	bo_service varchar(80) NOT NULL,
+	bo_stat int NOT NULL DEFAULT 1,CHECK(bo_stat>=1 and bo_stat<=3),
+	bo_time datetime NOT NULL default now(),
+	bo_comment varchar(80),
+	use_uid int,
+	sh_uid int,
+	PRIMARY KEY (bo_uid)
 );
 
 
 CREATE TABLE COMMENT
 (
-   co_uid int NOT NULL AUTO_INCREMENT,
-   co_star int NOT NULL,
-   co_content text NOT NULL,
-   co_name varchar(40) NOT NULL,
-   co_regdate datetime NOT NULL DEFAULT now(),
-   use_uid int,
-   sh_uid int,
-   co_title varchar(20) NOT NULL,
-   PRIMARY KEY (co_uid)
+	co_uid int NOT NULL AUTO_INCREMENT,
+	co_star int NOT NULL,
+	co_content text NOT NULL,
+	co_name varchar(40) NOT NULL,
+	co_regdate datetime NOT NULL DEFAULT now(),
+	use_uid int,
+	sh_uid int,
+	co_title varchar(20) NOT NULL,
+	PRIMARY KEY (co_uid)
 );
 
 
 CREATE TABLE DESIGNER
 (
-   de_uid int NOT NULL AUTO_INCREMENT,
-   de_name varchar(40) NOT NULL,
-   de_position varchar(20) NOT NULL DEFAULT '디자이너',
-   de_career int NOT NULL,
-   de_major varchar(40) NOT NULL,
-   de_picture varchar(40),
-   sh_uid int,
-   PRIMARY KEY (de_uid)
+	de_uid int NOT NULL AUTO_INCREMENT,
+	de_name varchar(40),
+	de_position varchar(20),
+	de_career int default 0,
+	de_major varchar(40),
+	de_picture varchar(400) NOT NULL default '0',
+	sh_uid int,
+	PRIMARY KEY (de_uid)
 );
 
 
 CREATE TABLE REPLY
 (
-   re_uid int NOT NULL AUTO_INCREMENT,
-   re_content text NOT NULL,
-   co_uid int,
-   re_regdate datetime NOT NULL DEFAULT now(),
-   PRIMARY KEY (re_uid)
+	re_uid int NOT NULL AUTO_INCREMENT,
+	re_content text NOT NULL,
+	co_uid int,
+	re_regdate datetime NOT NULL DEFAULT now(),
+	PRIMARY KEY (re_uid)
 );
 
 
 CREATE TABLE SERVICE
 (
-   ser_uid int NOT NULL AUTO_INCREMENT,
-   ser_name varchar(40) NOT NULL,
-   ser_price int,
-   ser_time int NOT NULL,
-   sh_uid int,
-   PRIMARY KEY (ser_uid)
+	ser_uid int NOT NULL AUTO_INCREMENT,
+	ser_name varchar(40),
+	ser_price int default 0,
+	ser_time int default 0,
+	sh_uid int NOT NULL,
+	PRIMARY KEY (ser_uid)
 );
 
 
 CREATE TABLE SHOP
 (
-   sh_uid int NOT NULL AUTO_INCREMENT,
-   sh_id varchar(40) NOT NULL,
-   sh_pw varchar(15) NOT NULL,
-   sh_no_id double NOT NULL,
-   sh_name varchar(20) NOT NULL,
-   sh_telephone varchar(30) NOT NULL,
-   sh_location varchar(80),
-   sh_location_lat varchar(40),
-   sh_location_lng varchar(40),
-   sh_hello varchar(200),
-   sh_picture1 varchar(400),
-   sh_picture2 varchar(400),
-   sh_picture3 varchar(400),
-   sh_starttime int DEFAULT 9,
-   sh_endtime int DEFAULT 21,
-   num_identify int DEFAULT 2,
-   sh_star double,
-   PRIMARY KEY (sh_uid),
-   UNIQUE (sh_id),
-   UNIQUE (sh_no_id)
+	sh_uid int NOT NULL AUTO_INCREMENT,
+	sh_id varchar(40) NOT NULL,
+	sh_pw varchar(15) NOT NULL,
+	sh_no_id double NOT NULL,
+	sh_name varchar(20) NOT NULL,
+	sh_telephone varchar(30) NOT NULL,
+	sh_location varchar(80),
+	sh_location_lat varchar(40),
+	sh_location_lng varchar(40),
+	sh_hello varchar(200),
+	sh_picture1 varchar(400) default '0',
+	sh_picture2 varchar(400) default '0',
+	sh_picture3 varchar(400) default '0',
+	sh_starttime int DEFAULT 9,
+	sh_endtime int DEFAULT 21,
+	num_identify int DEFAULT 2,
+	-- 별점
+	sh_star double COMMENT '별점',
+	PRIMARY KEY (sh_uid),
+	UNIQUE (sh_id),
+	UNIQUE (sh_no_id)
 );
 
 
 CREATE TABLE USER
 (
-   use_id varchar(40) NOT NULL,
-   use_uid int NOT NULL AUTO_INCREMENT,
-   use_pw varchar(15) NOT NULL,
-   use_name varchar(40) NOT NULL,
-   use_phoneNum varchar(11) NOT NULL,
-   num_identify int DEFAULT 1,
-   PRIMARY KEY (use_uid),
-   UNIQUE (use_id),
-   UNIQUE (use_phoneNum)
+	use_id varchar(40) NOT NULL,
+	use_uid int NOT NULL AUTO_INCREMENT,
+	use_pw varchar(15) NOT NULL,
+	use_name varchar(40) NOT NULL,
+	use_phoneNum varchar(11) NOT NULL,
+	num_identify int DEFAULT 1,
+	PRIMARY KEY (use_uid),
+	UNIQUE (use_id),
+	UNIQUE (use_phoneNum)
 );
+
+
 
 /* Create Foreign Keys */
 
 ALTER TABLE REPLY
-   ADD FOREIGN KEY (co_uid)
-   REFERENCES COMMENT (co_uid)
-   ON UPDATE RESTRICT
-   ON DELETE cascade
+	ADD FOREIGN KEY (co_uid)
+	REFERENCES COMMENT (co_uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE BOOK
-   ADD FOREIGN KEY (sh_uid)
-   REFERENCES SHOP (sh_uid)
-   ON UPDATE RESTRICT
-   ON DELETE set null
+	ADD FOREIGN KEY (sh_uid)
+	REFERENCES SHOP (sh_uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE COMMENT
-   ADD FOREIGN KEY (sh_uid)
-   REFERENCES SHOP (sh_uid)
-   ON UPDATE RESTRICT
-   ON DELETE set null
+	ADD FOREIGN KEY (sh_uid)
+	REFERENCES SHOP (sh_uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE DESIGNER
-   ADD FOREIGN KEY (sh_uid)
-   REFERENCES SHOP (sh_uid)
-   ON UPDATE RESTRICT
-   ON DELETE cascade
+	ADD FOREIGN KEY (sh_uid)
+	REFERENCES SHOP (sh_uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE SERVICE
-   ADD FOREIGN KEY (sh_uid)
-   REFERENCES SHOP (sh_uid)
-   ON UPDATE RESTRICT
-   ON DELETE cascade
+	ADD FOREIGN KEY (sh_uid)
+	REFERENCES SHOP (sh_uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE BOOK
-   ADD FOREIGN KEY (use_uid)
-   REFERENCES USER (use_uid)
-   ON UPDATE RESTRICT
-   ON DELETE set null
+	ADD FOREIGN KEY (use_uid)
+	REFERENCES USER (use_uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
 ALTER TABLE COMMENT
-   ADD FOREIGN KEY (use_uid)
-   REFERENCES USER (use_uid)
-   ON UPDATE RESTRICT
-   ON DELETE set null
+	ADD FOREIGN KEY (use_uid)
+	REFERENCES USER (use_uid)
+	ON UPDATE RESTRICT
+	ON DELETE RESTRICT
 ;
 
 
-/* 샘플데이터 */
+
+/***** 샘플데이터 *****/
 
 insert into USER (use_id,use_pw,use_name,use_phoneNum) values 
 ('userId01','1234','임민교','01011111111'),
@@ -194,14 +198,19 @@ sh_location_lat,sh_location_lng,sh_hello,sh_starttime,sh_endtime) values
 37.49049,126.93632,'최선을 다하는 슬리피우드 미용실입니다.',9,20),
 ('shopId05','1234',5555555555,'엘리니아미용실','010-4444-4444','빅토리아아일랜드',
 37.440279,126.99632,'최선을 다하는 엘리니아 미용실입니다.',9,21),
-('shopId06','1234',6666666666,'코잼노가다','010-4444-4444','빅토리아아일랜드',
-37.424279,126.98732,'최선을 다하는 코잼노가다 미용실입니다.',9,21),
-('shopId07','1234',7777777777,'뭐로하지','010-4444-4444','빅토리아아일랜드',
-37.488279,126.98632,'최선을 다하는 뭐로하지 미용실입니다.',9,21),
-('shopId08','1234',8888888888,'이름정하기싫다','010-4444-4444','빅토리아아일랜드',
-37.478279,126.98332,'최선을 다하는 이름정하기싫다 미용실입니다.',9,21)
+('shopId06','1234',6666666666,'테스트1','010-4444-4444','빅토리아아일랜드',
+37.424279,126.98732,'최선을 다하는 테스트1 미용실입니다.',9,21),
+('shopId07','1234',7777777777,'테스트2','010-4444-4444','빅토리아아일랜드',
+37.488279,126.98632,'최선을 다하는 테스트2 미용실입니다.',9,21),
+('shopId08','1234',8888888888,'테스트3','010-4444-4444','빅토리아아일랜드',
+37.478279,126.98332,'최선을 다하는 테스트3 미용실입니다.',9,21)
 ;
-select * from shop;
+
+UPDATE SHOP SET
+sh_picture1 = 'sh1.jpg',
+sh_picture2 = 'sh2.jpg',
+sh_picture3 = 'sh3.png'
+where sh_uid = 1;
 
 insert into COMMENT (co_star,co_content,co_name,co_title,use_uid,sh_uid) values 
 ('4','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
@@ -215,17 +224,17 @@ insert into COMMENT (co_star,co_content,co_name,co_title,use_uid,sh_uid) values
 ;
 
 INSERT INTO DESIGNER
-(de_name,de_position,de_career,de_major,de_picture,sh_uid)
-VALUES('디자이너1', '점장', 15, '염색', '1', 1),
-('디자이너2','디자이너', 3, '커트', '1', 1),
-('디자이너2','원장', 30, '파마', '1', 1);
+(de_name,de_position,de_career,de_major,sh_uid)
+VALUES('디자이너1', '점장', 20, '염색', 1),
+('디자이너2','디자이너', 10, '커트', 1),
+('디자이너3','디자이너', 8, '파마', 1);
 
 
 INSERT INTO SERVICE
 (ser_name,ser_price,ser_time,sh_uid)
-VALUES('염색', 100000, 3, 1),
-('파마', 100000, 4, 1),
-('컷트', 100000, 1, 1);
+VALUES('염색', 50000, 2, 1),
+('파마', 80000, 3, 1),
+('컷트', 30000, 1, 1);
 
 
 insert into book ( bo_service,bo_stat,bo_comment,use_uid,sh_uid,bo_time)

@@ -64,23 +64,17 @@ public class ServiceDAO {
 
 	// 서비스 추가
 	public int insert(ServiceDTO dto) throws SQLException {
-		String ser_name = dto.getSer_name();
-		int ser_price = dto.getSer_price();
-		int ser_time = dto.getSer_time();
 		int sh_uid = dto.getSh_uid();
-		return this.insert(ser_name, ser_price, ser_time, sh_uid);
+		return this.insert(sh_uid);
 	}
 
-	public int insert(String ser_name, int ser_price, int ser_time, int sh_uid)
+	public int insert(int sh_uid)
 					throws SQLException {
 		int cnt = 0;
 
 		try {
 			pstmt = conn.prepareStatement(infoInterface.SERVICE_INSERT);
-			pstmt.setString(1, ser_name);
-			pstmt.setInt(2, ser_price);
-			pstmt.setInt(3, ser_time);
-			pstmt.setInt(4, sh_uid);
+			pstmt.setInt(1, sh_uid);
 			cnt = pstmt.executeUpdate();
 		} finally {
 			close();

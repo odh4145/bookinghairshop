@@ -5,13 +5,13 @@
 <c:choose>
 	<c:when test="${designer == 0 }">
 		<script>
-			alert("추가실패");
+			alert("디자이너 추가 실패");
 			history.back();
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("추가되었습니다.");
+			alert("디자이너 추가 완료");
 			location.href = "storeUpdate.bbq?sh_uid=${sessionScope.shop }";
 		</script>
 	</c:otherwise>

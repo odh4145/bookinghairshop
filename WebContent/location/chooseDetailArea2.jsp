@@ -9,9 +9,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>지역별 매장</title>
-<link rel="stylesheet"
-   href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
+<link rel="icon" href="../img/favicon.png">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link href="../css/menu.css" rel="stylesheet" type="text/css">
 <link href="../css/location.css" rel="stylesheet" type="text/css">
 <link href="../css/chooseDetailArea.css" rel="stylesheet" type="text/css">
@@ -102,7 +101,7 @@ th, td {
    </header>   
 
    <section>
-      <div class="content">
+      <div class="content pb">
          <!-- 상세페이지 제목 -->
          <h2 id="content_title">지역별매장 - 서울</h2>
 
@@ -175,187 +174,179 @@ th, td {
                      </div>
                   </fieldset>
                </form>
+            </div>
 
             <div id="map"></div>
             
-            <!---------------------- script----------------------->
-            <script>
-               var geocoder;
-               var map;
-               var labels = new Array();
-               var locations = new Array();
-               var pos;
-               var url
-             function initialize() {
-               geocoder = new google.maps.Geocoder();
-               var latlng = new google.maps.LatLng(37.5325896, 126.9900429);
-               // 초기 지도값은 서울이 한눈에 보이는 그정도 ? 
-               var mapOptions = {
-                 zoom: 11,
-                 center: latlng
-               }
-               map = new google.maps.Map(document.getElementById('map'), mapOptions);
-               
-              var markers = locations.map(function(location, i) {
-               console.log(location);
-               return new google.maps.Marker({
-                  position : location,
-                  label : labels[i % labels.length]
-               });
-            });
+<!---------------------- script----------------------->
+<script>
+var geocoder;
+var map;
+var labels = new Array();
+var locations = new Array();
+var pos;
+var url
 
-            var markerCluster = new MarkerClusterer(
-                  map,
-                  markers,
-                  {
-                     imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-                  });
+function initialize() {
+	geocoder = new google.maps.Geocoder();
+	var latlng = new google.maps.LatLng(37.5325896, 126.9900429);
+   
+	// 초기 지도값은 서울이 한눈에 보이는 그정도 ? 
+   	var mapOptions = {
+		zoom: 11,
+		center: latlng
+	}
+  	map = new google.maps.Map(document.getElementById('map'), mapOptions);
+	
+	var markers = locations.map(function(location, i) {
+		console.log(location);		
+		return new google.maps.Marker({
+			position : location,
+			label : labels[i % labels.length]
+		});
+	});
 
-               
-             } // 맵 리로딩 하는 펑션
+    var markerCluster = new MarkerClusterer(
+    	map,
+        markers,
+        {
+    		imagePath : 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+        }
+    );             
+} // 맵 리로딩 하는 펑션 end initialize
              
-               ///////////////////위는 지도관련(마커포함)/////////////아래는 사용자 위치 및 주변매장 불러오기////////////////////////////////////////
+///////////////////위는 지도관련(마커포함)/////////////아래는 사용자 위치 및 주변매장 불러오기////////////////////////////////////////
+// 사용자의 위치 받아오기 + JSON 
+navigator.geolocation.getCurrentPosition(function(position) {
+	pos = {
+	   lat : position.coords.latitude,
+	   lng : position.coords.longitude
+	};
+	var userlat = pos.lat;
+	var userlng = pos.lng;
+	var url = "${pageContext.request.contextPath}/shopSelect.bbq?lat=" + userlat + "&lng=" + userlng;
 
-               // 사용자의 위치 받아오기 + JSON 
-               navigator.geolocation
-                     .getCurrentPosition(function(position) {
+    $.ajax({
+       url : url,
+       type : "GET",
+       cache : false,
+       success : function(data, status) {
+          if (status == "success") {
+             parseJSON(data);
+          };
+       }
+    });//end ajax
 
-                        pos = {
-                           lat : position.coords.latitude,
-                           lng : position.coords.longitude
-                        };
-                        var userlat = pos.lat;
-                        var userlng = pos.lng;
-
-                        
-                        var url = "${pageContext.request.contextPath}/shopSelect.bbq?lat="
-                              + userlat + "&lng=" + userlng;
-
-                        $.ajax({
-                           url : url,
-                           type : "GET",
-                           cache : false,
-                           success : function(data, status) {
-                              if (status == "success") {
-                                 parseJSON(data);
-                              };
-                           }
-                        });//end ajax
-
-                        function parseJSON(jsonObj) {
-                            var row = jsonObj.datalist;
-                            var i;
-                            var arrLat = new Array();
-                            var arrLng = new Array();
-                            var ul = "";
-                            for (i = 0; i < row.length; i++) {
-                               ul += "<div class='sh_list' OnClick = location.href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>";
-                               ul += "<a id='list_pic'><img src='" + row[i].picture1 + "'></a>";
-                               ul += "<ul id='list_info'><li><a href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>"+ row[i].name + "</a></li>";
-                               ul += "<li><span>★</span>" + row[i].star + "</li>";
-                               ul += "<li>" + row[i].location + "</li>";
-                               ul += "<li>" + row[i].telephone + "</li>";
-                               ul += "</ul></div>"
-                            }
-                            $("#shoplist").html(ul);
-
-                           for (i = 0; i < row.length; i++) {
-
-                              locations
-                                    .push({
-                                       lat : parseFloat(row[i].locationLat),
-                                       lng : parseFloat(row[i].locationLng)
-                                    });
-                              console.log(locations[i]);
-
-                              labels.push(row[i].name);
-                           }
-
-                        } //end parseJSON
-
-                     });// 위치 받아오기 종료?
+    function parseJSON(jsonObj) {
+        var row = jsonObj.datalist;
+        var i;
+        var arrLat = new Array();
+        var arrLng = new Array();
+        var ul = "";
+        for (i = 0; i < row.length; i++) {
+           ul += "<div class='sh_list' OnClick = location.href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>";
+           if(row[i].pickture1 == "0"){
+        	   ul += "<a id='list_pic'><img src='http://placehold.it/150x150'></a>";
+           }else{
+        	   ul += "<a id='list_pic'><img src='${pageContext.request.contextPath}/img/" + row[i].pickture1 + "'></a>";
+           }
+          
+           ul += "<ul id='list_info'><li><a href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>"+ row[i].name + "</a></li>";
+           ul += "<li><span>★ </span>" + row[i].star + "</li>";
+           ul += "<li>" + row[i].location + "</li>";
+           ul += "<li>" + row[i].telephone + "</li>";
+           ul += "</ul></div>"
+        }
+        $("#shoplist").html(ul);
+        
+        for (i = 0; i < row.length; i++) {
+        	locations.push({
+        		lat : parseFloat(row[i].locationLat),
+                lng : parseFloat(row[i].locationLng)
+            });
+        	console.log(locations[i]);
+        	labels.push(row[i].name);
+        }
+    } //end parseJSON
+});// 위치 받아오기 종료 end navigator
+                                                      
                            
-                           
-                           
-                       function codeAddress(a) {
-                           var address = a;
-                           var userlat;
-                           var userlng;
-                         
-                           var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+ address +"&key=AIzaSyCFDCbB-7P2BDLp9LuwLHHp7e-yHfrq438";
-                           //alert(url);
-                           
-                           $.ajax({
-                              url : url,
-                              type : "GET",
-                              cache : false,
-                              success : function(data, status){
-                                 if(status == "success"){ parseJSO(data);}
-                              }
-                           });
-                           
-                           function parseJSO(jsonObj){
-                               userlat = jsonObj.results[0].geometry.location.lat;
-                               userlng = jsonObj.results[0].geometry.location.lng;
-                       
-                               
-                               var url = "${pageContext.request.contextPath}/shop.bbq?lat="
-                                 + userlat + "&lng=" + userlng;
-                              //alert(url);
-                              
-                              $.ajax({
-                                 url : url,
-                                 type : "GET",
-                                 cache : false,
-                                 success : function(data, status){
-                                    if(status == "success")parseJSON(data);
-                                 }
-                              });
-                              function parseJSON(jsonObj) {
-                                  var row = jsonObj.datalist;
-                                  var i;
-                                  var arrLat = new Array();
-                                  var arrLng = new Array();
-                                  var ul = "";
-                                  for (i = 0; i < row.length; i++) {
-                                     ul += "<div class='sh_list' OnClick = location.href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>";
-                                     ul += "<a id='list_pic'><img src='" + row[i].picture1 + "'></a>";
-                                     ul += "<ul id='list_info'><li><a href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>"+ row[i].name + "</a></li>";
-                                     ul += "<li><span>★</span>" + row[i].star + "</li>";
-                                     ul += "<li>" + row[i].location + "</li>";
-                                     ul += "<li>" + row[i].telephone + "</li>";
-                                     ul += "</ul></div>"
-                                  }
-                                  $("#shoplist").html(ul);
-
-                              } //end parseJSON
-                           
-                           }
-
-                           
-                           geocoder.geocode( { 'address': address}, function(results, status) {
-                             if (status == 'OK') {
-                               map.setCenter(results[0].geometry.location);
-                               map.setZoom(13);     
-                             
-                             } else {
-                               alert('Geocode was not successful for the following reason: ' + status);
-                             }
-                           });
-                         };
-            </script>
+function codeAddress(a) {
+	var address = a;
+    var userlat;
+    var userlng;
+  
+    var url = "https://maps.googleapis.com/maps/api/geocode/json?address="+ address +"&key=AIzaSyCFDCbB-7P2BDLp9LuwLHHp7e-yHfrq438";
+    //alert(url);
+    
+    $.ajax({
+       url : url,
+       type : "GET",
+       cache : false,
+       success : function(data, status){
+          if(status == "success"){ parseJSO(data);}
+       }
+    });
+    
+    function parseJSO(jsonObj){
+        userlat = jsonObj.results[0].geometry.location.lat;
+        userlng = jsonObj.results[0].geometry.location.lng;
+     
+        var url = "${pageContext.request.contextPath}/shop.bbq?lat="
+          + userlat + "&lng=" + userlng;
+       //alert(url);
+       
+       $.ajax({
+          url : url,
+          type : "GET",
+          cache : false,
+          success : function(data, status){
+             if(status == "success")parseJSON(data);
+          }
+       });
+       
+       function parseJSON(jsonObj) {
+           var row = jsonObj.datalist;
+           var i;
+           var arrLat = new Array();
+           var arrLng = new Array();
+           var ul = "";
+           for (i = 0; i < row.length; i++) {
+              ul += "<div class='sh_list' OnClick = location.href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>";
+              if(row[i].pickture1 == "0"){
+           	   ul += "<a id='list_pic'><img src='http://placehold.it/150x150'></a>";
+              }else{
+           	   ul += "<a id='list_pic'><img src='${pageContext.request.contextPath}/img/" + row[i].pickture1 + "'></a>";
+              }
+              ul += "<ul id='list_info'><li><a href='../info/storeInfo.bbq?sh_uid="+ row[i].sh_uid+"'>"+ row[i].name + "</a></li>";
+              ul += "<li><span>★ </span>" + row[i].star + "</li>";
+              ul += "<li>" + row[i].location + "</li>";
+              ul += "<li>" + row[i].telephone + "</li>";
+              ul += "</ul></div>"
+           }
+           $("#shoplist").html(ul);
+       } //end parseJSON    
+    }
+ 
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        map.setZoom(13);           
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+};
+</script>
 
          <div id="shoplist">
          </div>
-
          
-         </div>
-        </div>
          <!-- 화살표버튼 -->
          <div id="go_top">
             <a><i class="fas fa-arrow-circle-up"></i></a>
-         </div>
-      </div>
+         </div>       
+      </div>      
    </section>
 
 

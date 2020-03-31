@@ -113,22 +113,49 @@
    
          <!------------- 세부메뉴 ----------class="inner" 지우세요------------->
          <div class="inner">
-            <form name="picfrm" enctype="Multipart/form-data" action="storepicUpdate.bbq" method="post">
-               <ul class="pic_box">
+            <form name="picfrm1" class="pic_box" enctype="Multipart/form-data" action="storepicUpdate.bbq" method="post">
+               <ul>
                   <input type="hidden" name="sh_uid" value="${info[0].sh_uid }">
-                  <li><img src="${info[0].sh_picture1 }"></li>
+                  <c:choose>
+					<c:when test="${info[0].sh_picture1 == '0' }">
+						<li><img src="http://placehold.it/300x300"></li>
+					</c:when>
+					<c:otherwise>
+						<li><img src="${pageContext.request.contextPath}/img/${info[0].sh_picture1 }"></li>
+					</c:otherwise>
+				  </c:choose>
                   <li><input class="insert_dpic" type="file" name="sh_picture1" size=40></li>
                   <li><input class="update" type="submit" value="수정하기" /></li>
-               </ul>                  
-               <ul class="pic_box">
+               </ul>
+             </form> 
+              
+             <form name="picfrm2" class="pic_box" enctype="Multipart/form-data" action="storepicUpdate.bbq" method="post">              
+               <ul>
                   <input type="hidden" name="sh_uid" value="${info[0].sh_uid }">
-                  <li><img src="${info[0].sh_picture2 }"></li>
+                  <c:choose>
+					<c:when test="${info[0].sh_picture2 == '0' }">
+						<li><img src="http://placehold.it/300x300"></li>
+					</c:when>
+					<c:otherwise>
+						<li><img src="${pageContext.request.contextPath}/img/${info[0].sh_picture2 }"></li>
+					</c:otherwise>
+				  </c:choose>
                   <li><input class="insert_dpic" type="file" name="sh_picture2" size=40></li>
                   <li><input class="update" type="submit" value="수정하기" /></li>
-               </ul>                  
-               <ul class="pic_box">
+               </ul>   
+             </form>   
+              
+             <form name="picfrm3" class="pic_box" enctype="Multipart/form-data" action="storepicUpdate.bbq" method="post">           
+               <ul>
                   <input type="hidden" name="sh_uid" value="${info[0].sh_uid }">
-                  <li><img src="${info[0].sh_picture3 }"></li>
+                  <c:choose>
+					<c:when test="${info[0].sh_picture3 == '0' }">
+						<li><img src="http://placehold.it/300x300"></li>
+					</c:when>
+					<c:otherwise>
+						<li><img src="${pageContext.request.contextPath}/img/${info[0].sh_picture3 }"></li>
+					</c:otherwise>
+				  </c:choose>
                   <li><input class="insert_dpic" type="file" name="sh_picture3" size=40></li>
                   <li><input class="update" type="submit" value="수정하기" /></li>
                </ul>                  

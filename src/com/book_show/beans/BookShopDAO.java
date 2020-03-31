@@ -46,7 +46,7 @@ public class BookShopDAO implements K {
 	
 	public BookShopDTO[] createArray(ResultSet rs) throws SQLException {
 		ArrayList<BookShopDTO> list = new ArrayList<BookShopDTO>();
-
+		
 		while (rs.next()) {
 			String bo_service = rs.getString("bo_service");
 			
@@ -54,7 +54,6 @@ public class BookShopDAO implements K {
 			int bo_stat = rs.getInt("bo_stat");
 			int sh_uid = rs.getInt("sh_uid");
 			Timestamp bo_time = rs.getTimestamp("bo_time");
-
 			BookShopDTO dto = new BookShopDTO(bo_uid, bo_time, bo_service,
 					bo_stat, sh_uid);
 			list.add(dto);
@@ -66,19 +65,7 @@ public class BookShopDAO implements K {
 
 		return arr;
 	}
-	// service time int로 바꾸는 메소드
-		public int ser_time(ResultSet rs) throws SQLException{
-				rs.first();
-				Time ser_time = rs.getTime("ser_time");
-				String service = new SimpleDateFormat("HH").format(ser_time);
-				int ser_time_int = Integer.parseInt(service);
-				System.out.println(ser_time);
-				System.out.println(ser_time_int);
-			
-			return ser_time_int;
-		}
-	
-	
+
 	// 매장uid로 예약 확인
 	public BookShopDTO[] select_by_shop (int shop_uid) throws SQLException{
 		BookShopDTO[] arr = null;
@@ -115,8 +102,6 @@ public class BookShopDAO implements K {
 			pstmt = conn.prepareStatement(K.SQL_BOOK_SERVICE_TIME);
 			pstmt.setString(1, name);
 			pstmt.setInt(2, sh_uid);
-			rs = pstmt.executeQuery();
-			arr = ser_time(rs);
 		} finally {}
 		
 		return arr;

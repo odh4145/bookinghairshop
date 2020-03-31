@@ -5,13 +5,13 @@
 <c:choose>
 	<c:when test="${service == 0 }"> 
 		<script>
-			alert("수정실패");
+			alert("서비스 수정 실패");
 			history.back();
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("서비스 정보가 수정되었습니다.");
+			alert("서비스 수정 완료");
 			location.href = "storeUpdate.bbq?sh_uid=${param.sh_uid}";
 		</script>
 	</c:otherwise>

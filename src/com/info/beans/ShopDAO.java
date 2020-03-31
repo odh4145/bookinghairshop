@@ -79,14 +79,38 @@ public class ShopDAO {
 	}
 	
 	// 매장사진 수정하기
-	public int infopicupdate(int sh_uid, String sh_picture1, String sh_picture2, String sh_picture3) throws SQLException{
+	public int infopicupdate1(int sh_uid, String sh_picture1) throws SQLException{
 		int cnt = 0;
 		try {
-			pstmt = conn.prepareStatement(infoInterface.STORE_PIC_UPDATE);
+			pstmt = conn.prepareStatement(infoInterface.STORE_PIC_UPDATE1);
 			pstmt.setString(1, sh_picture1);
-			pstmt.setString(2, sh_picture2);
-			pstmt.setString(3, sh_picture3);
-			pstmt.setInt(4, sh_uid);
+			pstmt.setInt(2, sh_uid);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public int infopicupdate2(int sh_uid, String sh_picture2) throws SQLException{
+		int cnt = 0;
+		try {
+			pstmt = conn.prepareStatement(infoInterface.STORE_PIC_UPDATE2);
+			pstmt.setString(1, sh_picture2);
+			pstmt.setInt(2, sh_uid);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		return cnt;
+	}
+	
+	public int infopicupdate3(int sh_uid, String sh_picture3) throws SQLException{
+		int cnt = 0;
+		try {
+			pstmt = conn.prepareStatement(infoInterface.STORE_PIC_UPDATE3);
+			pstmt.setString(1, sh_picture3);
+			pstmt.setInt(2, sh_uid);
 			cnt = pstmt.executeUpdate();
 		} finally {
 			close();

@@ -8,6 +8,7 @@ public class BookShopDTO {
 	private String bo_service; 
 	private int bo_stat;
 	private int sh_uid;
+	
 	public BookShopDTO(int bo_uid, Timestamp bo_time, String bo_service, int bo_stat, int sh_uid) {
 		super();
 		this.bo_uid = bo_uid;
@@ -49,7 +50,6 @@ public class BookShopDTO {
 	public void setSh_uid(int sh_uid) {
 		this.sh_uid = sh_uid;
 	}
-
 }
 
 

@@ -14,6 +14,6 @@
 <% } else { %>
 <script>
 	alert("예약을 수락하셨습니다");
-	location.href = "/hairshop/book/shop.bbq?sh_uid=<%=uid%>";
+	location.href = "shop.bbq?sh_uid=<%=uid%>";
 </script>
 <% } %>

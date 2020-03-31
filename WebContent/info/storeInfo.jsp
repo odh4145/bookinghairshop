@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <c:choose>
 	<c:when test="${empty info || fn:length(info) == 0 }">
@@ -91,9 +92,30 @@
 		<!---------------------- content ---------------------->
 		<div class="info">	
 			<div class="store_pic">
-				<img src="${info[0].sh_picture1 }" />
-				<img src="${info[0].sh_picture2 }" />
-				<img src="${info[0].sh_picture3 }" />
+				<c:choose>
+					<c:when test="${info[0].sh_picture1 == '0' }">
+						<img src="http://placehold.it/300x300">
+					</c:when>
+					<c:otherwise>
+						<img src="${pageContext.request.contextPath}/img/${info[0].sh_picture1}" />
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${info[0].sh_picture2 == '0' }">
+						<img src="http://placehold.it/300x300">
+					</c:when>
+					<c:otherwise>
+						<img src="${pageContext.request.contextPath}/img/${info[0].sh_picture2}" />
+					</c:otherwise>
+				</c:choose>
+				<c:choose>
+					<c:when test="${info[0].sh_picture3 == '0' }">
+						<img src="http://placehold.it/300x300">
+					</c:when>
+					<c:otherwise>
+						<img src="${pageContext.request.contextPath}/img/${info[0].sh_picture3}" />
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<div class="store_info">
 				<h2>${info[0].sh_name }</h2>
@@ -121,7 +143,11 @@
 					<h4>경과시간은 예상일 뿐이며 매장상황에 따라 달라질 수 있습니다.</h4>
 					<c:forEach var="dto1" items="${service }">
 						<ul class="price_info">
-							<li>${dto1.ser_name }<br>${dto1.ser_price }원<br><span>${dto1.ser_time }시간</span></li>
+							<li>
+								${dto1.ser_name }<br>
+								<fmt:formatNumber value="${dto1.ser_price}" pattern="#,###,###"/>원<br>
+								<span>${dto1.ser_time }시간</span>
+							</li>
 						</ul>
 					</c:forEach>	
 				</div>
@@ -131,8 +157,15 @@
 					<h3>디자이너 정보</h3>
 					<c:forEach var="dto2" items="${designer }">
 						<ul class="designer">
-							<li><img src="${dto2.de_picture }" /></li>
-							<li class="designer_name">${dto2.de_name } ${dto2.de_position }</li>
+							<c:choose>
+								<c:when test="${dto2.de_picture == '0' }">
+									<li><img src="http://placehold.it/150x150"></li>
+								</c:when>
+								<c:otherwise>
+									<li><img src="${pageContext.request.contextPath}/img/${dto2.de_picture }"></li>
+								</c:otherwise>
+							</c:choose>
+							<li class="designer_name">${dto2.de_name }<br>${dto2.de_position }</li>
 							<li>${dto2.de_career }년 경력</li>
 							<li>${dto2.de_major } 전문</li>
 						</ul>

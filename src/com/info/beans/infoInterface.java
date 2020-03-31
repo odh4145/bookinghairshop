@@ -23,19 +23,25 @@ public interface infoInterface {
 			+ "WHERE sh_uid = ?";
 	
 	// 매장사진 수정
-		public static final String STORE_PIC_UPDATE = 
-				"UPDATE SHOP SET "
-				+ "sh_picture1 = ?,"
-				+ "sh_picture2 = ?,"
-				+ "sh_picture3 = ? "
-				+ "WHERE sh_uid = ?";
+	public static final String STORE_PIC_UPDATE1 = 
+			"UPDATE SHOP SET "
+			+ "sh_picture1 = ?"
+			+ "WHERE sh_uid = ?";
+	public static final String STORE_PIC_UPDATE2 = 
+			"UPDATE SHOP SET "
+			+ "sh_picture2 = ?"
+			+ "WHERE sh_uid = ?";
+	public static final String STORE_PIC_UPDATE3 = 
+			"UPDATE SHOP SET "
+			+ "sh_picture3 = ?"
+			+ "WHERE sh_uid = ?";
 	
 	// 디자이너 
 	public static final String DESIGNER_INSERT = 
 			"INSERT INTO DESIGNER"
-			+ "(de_name, de_position, de_career, de_major, sh_uid)"
+			+ "(sh_uid)"
 			+ "VALUES"
-			+ "(?, ?, ?, ?, ?)";
+			+ "(?)";
 	
 	// 선택된 디자이너의 정보를 보기 위해
 	public static final String DESIGNER_SELECT_BY_UID = 
@@ -63,9 +69,9 @@ public interface infoInterface {
 	// 시술목록
 	public static final String SERVICE_INSERT = 
 			"INSERT INTO SERVICE"
-			+ "(ser_name, ser_price, ser_time, sh_uid)"
+			+ "(sh_uid)"
 			+ "VALUES"
-			+ "(?, ?, ?, ?)";
+			+ "(?)";
 	
 	public static final String SERVICE_SELECT_BY_UID =
 			"SELECT * FROM SERVICE WHERE ser_uid= ?";

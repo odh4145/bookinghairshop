@@ -21,7 +21,7 @@ public class DesignerUpdateCommand implements Command {
 
 		// 실제 저장되는 물리적인 경로 확인하기
 		ServletContext context = request.getServletContext();
-		String saveDirectory = context.getRealPath("upload");
+		String saveDirectory = context.getRealPath("img");
 		System.out.println("업로드 경로: " + saveDirectory);
 
 		String fileSystemName = null; // 실제 저장되는 파일 이름
@@ -58,14 +58,14 @@ public class DesignerUpdateCommand implements Command {
 
 		// 파일 url, 나중에 link url 을 response 해줘야 한다
 		String fullpath = saveDirectory + "\\" + fileSystemName;
-		
+		System.out.println(fullpath);
 		
 		int de_uid = Integer.parseInt(multi.getParameter("de_uid"));
 		String de_name = multi.getParameter("de_name");
 		String de_position = multi.getParameter("de_position");
 		int de_career = Integer.parseInt(multi.getParameter("de_career"));
 		String de_major = multi.getParameter("de_major");
-		String de_picture = fullpath;
+		String de_picture = fileSystemName;
 		
 		DesignerDAO dao = new DesignerDAO();
 		int cnt = 0;

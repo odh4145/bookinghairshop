@@ -64,25 +64,17 @@ public class DesignerDAO {
 
 	// 디자이너 추가
 	public int insert(DesignerDTO dto) throws SQLException {
-		String de_name = dto.getDe_name();
-		String de_position = dto.getDe_position();
-		int de_career = dto.getDe_career();
-		String de_major = dto.getDe_major();
 		int sh_uid = dto.getSh_uid();
-		return this.insert(de_name, de_position, de_career, de_major, sh_uid);
+		return this.insert(sh_uid);
 	}
 
-	public int insert(String de_name, String de_position, int de_career, String de_major, int sh_uid) 
+	public int insert(int sh_uid) 
 			throws SQLException {
 		int cnt = 0;
 
 		try {
 			pstmt = conn.prepareStatement(infoInterface.DESIGNER_INSERT);
-			pstmt.setString(1, de_name);
-			pstmt.setString(2, de_position);
-			pstmt.setInt(3, de_career);
-			pstmt.setString(4, de_major);
-			pstmt.setInt(5, sh_uid);
+			pstmt.setInt(1, sh_uid);
 			cnt = pstmt.executeUpdate();
 		} finally {
 			close();

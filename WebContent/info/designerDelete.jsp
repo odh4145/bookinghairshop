@@ -5,13 +5,13 @@
 <c:choose>
 	<c:when test="${designer == 0 }">
 		<script>
-			alert("삭제실패");
+			alert("디자이너 삭제 실패");
 			history.back();
 		</script>
 	</c:when>
 	<c:otherwise>
 		<script>
-			alert("삭제되었습니다.");
+			alert("디자이너 삭제 완료");
 			location.href = "storeUpdate.bbq?sh_uid=${sessionScope.shop }";
 		</script>
 	</c:otherwise>
