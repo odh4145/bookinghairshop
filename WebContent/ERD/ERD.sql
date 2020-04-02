@@ -85,6 +85,7 @@ CREATE TABLE SHOP
 	sh_name varchar(20) NOT NULL,
 	sh_telephone varchar(30) NOT NULL,
 	sh_location varchar(80),
+	sh_location_d varchar(40),
 	sh_location_lat varchar(40),
 	sh_location_lng varchar(40),
 	sh_hello varchar(200),

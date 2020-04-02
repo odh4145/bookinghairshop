@@ -5,6 +5,7 @@ public class ShopDTO {
 	private String sh_name;
 	private String sh_telephone;
 	private String sh_location;
+	private String sh_location_d;
 	private String sh_hello;
 	private String sh_picture1;
 	private String sh_picture2;
@@ -21,13 +22,14 @@ public class ShopDTO {
 	}
 	
 	// 매개변수 받는 생성자
-	public ShopDTO(int sh_uid, String sh_name, String sh_telephone, String sh_location, String sh_hello, 
+	public ShopDTO(int sh_uid, String sh_name, String sh_telephone, String sh_location, String sh_location_d, String sh_hello, 
 				String sh_picture1, String sh_picture2, String sh_picture3, int sh_starttime, int sh_endtime, String sh_location_lat, String sh_location_lng) {
 		super();
 		this.sh_uid = sh_uid;
 		this.sh_name = sh_name;
 		this.sh_telephone = sh_telephone;
 		this.sh_location = sh_location;
+		this.sh_location_d = sh_location_d;
 		this.sh_hello = sh_hello;
 		this.sh_picture1 = sh_picture1;
 		this.sh_picture2 = sh_picture2;
@@ -71,6 +73,14 @@ public class ShopDTO {
 		this.sh_location = sh_location;
 	}
 	
+	public String getSh_location_d() {
+		return sh_location_d;
+	}
+
+	public void setSh_location_d(String sh_location_d) {
+		this.sh_location_d = sh_location_d;
+	}
+
 	public String getSh_hello() {
 		return sh_hello;
 	}
