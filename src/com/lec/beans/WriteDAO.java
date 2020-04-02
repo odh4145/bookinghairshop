@@ -217,7 +217,7 @@ public class WriteDAO {
       return cnt;
    }
    
-   public int updateShop(int sh_uid) throws SQLException {
+   public int updateStar(int sh_uid) throws SQLException {
       int cnt = 0;
       try {
          pstmt = conn.prepareStatement(D.SQL_UPDATE_SHOPSTAR);

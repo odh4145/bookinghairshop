@@ -8,12 +8,12 @@
 
 <% if(cnt == 0){ %>
 <script>
-	alert("예약수락에 실패하였습니다");
+	alert("예약 수락 실패");
 	history.back();
 </script>
 <% } else { %>
 <script>
-	alert("예약을 수락하셨습니다");
+	alert("예약 수락 성공");
 	location.href = "shop.bbq?sh_uid=<%=uid%>";
 </script>
 <% } %>

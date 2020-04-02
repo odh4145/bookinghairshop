@@ -14,6 +14,24 @@
 <!-- css파일 link -->
 <link href="../css/menu.css" rel="stylesheet" type="text/css">
 <link href="../css/chooseArea.css" rel="stylesheet" type="text/css">
+
+<!-- javascript 링크 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../js/public.js" type="text/javascript"></script>
+
+<!-- height 길이 조절 자바스크립트  -->
+<script>
+$(document).ready(function(){
+	var menu = 100;
+	var dHeight = $(document).height() - menu;
+	
+	$(document).resize(function() {
+		dHeight = $(document).height() - menu;
+	});
+	
+	$(".content").css('min-height', dHeight);
+});
+</script>
 </head>
 
 <body>
@@ -109,10 +127,5 @@
 		</div>
 	</div>
 </section>
-
-
-<!-- javascript 링크 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../js/public.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,7 +1,6 @@
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Drop Tables */
-
 DROP TABLE IF EXISTS BOOK;
 DROP TABLE IF EXISTS REPLY;
 DROP TABLE IF EXISTS COMMENT;
@@ -11,10 +10,7 @@ DROP TABLE IF EXISTS SHOP;
 DROP TABLE IF EXISTS USER;
 
 
-
-
 /* Create Tables */
-
 CREATE TABLE BOOK
 (
 	bo_uid int NOT NULL AUTO_INCREMENT,
@@ -214,21 +210,36 @@ sh_picture3 = 'sh3.png'
 where sh_uid = 1;
 
 insert into COMMENT (co_star,co_content,co_name,co_title,use_uid,sh_uid) values 
-('4','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
+('3','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
+('3','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
+('3','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
+('3','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
+('3','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
+('1','현진형탈모와라','임민교','엘리니아 미용실 - 파마',1,1),
+('2','민교 머리잘랐다 ~','임민교','헤네시스 미용실 - 컷트',1,1),
+('5','현진형탈모와라','임민교','엘리니아 미용실 - 파마',1,1),
 ('4','민교 머리 두번자른다','임민교','커닝시티 미용실 - 컷트',1,2),
+('1','탈모두번와라','임민교','코잼노가다 미용실 - 파마',2,2),
 ('5','민교 머리 염색한다','임민교','페리온 미용실 - 염색',2,3),
+('3','민교멘탈나갔다','임민교','뭐로하지 미용실 - 파마',1,3),
 ('5','민교 머리 볶았다ㅏㅏ','임민교','슬리피우드 미용실 - 파마',2,4),
-('1','현진형탈모와라','임민교','엘리니아 미용실 - 파마',1,5),
-('1','탈모두번와라','임민교','코잼노가다 미용실 - 파마',2,6),
-('3','민교멘탈나갔다','임민교','뭐로하지 미용실 - 파마',1,7),
-('4','민교 머리 풤~햇다','임민교','이름정하기싫다 미용실 - 파마',1,8)
+('4','민교 머리 풤~햇다','임민교','이름정하기싫다 미용실 - 파마',1,4)
 ;
+
+UPDATE shop set sh_star=(select ROUND(avg(co_star),2) 
+from comment where sh_uid=1) where sh_uid = 1;
+UPDATE shop set sh_star=(select ROUND(avg(co_star),2) 
+from comment where sh_uid=2) where sh_uid = 2;
+UPDATE shop set sh_star=(select ROUND(avg(co_star),2) 
+from comment where sh_uid=3) where sh_uid = 3;
+UPDATE shop set sh_star=(select ROUND(avg(co_star),2) 
+from comment where sh_uid=4) where sh_uid = 4;
 
 INSERT INTO DESIGNER
 (de_name,de_position,de_career,de_major,sh_uid)
-VALUES('디자이너1', '점장', 20, '염색', 1),
-('디자이너2','디자이너', 10, '커트', 1),
-('디자이너3','디자이너', 8, '파마', 1);
+VALUES('김염색', '점장', 20, '염색', 1),
+('박커트','디자이너', 10, '커트', 1),
+('이파마','디자이너', 8, '파마', 1);
 
 
 INSERT INTO SERVICE

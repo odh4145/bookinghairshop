@@ -31,7 +31,7 @@ public class WriteCommand implements Command {
             
             dao = new WriteDAO();
             
-            cnt2 = dao.updateShop(sh_uid);
+            cnt2 = dao.updateStar(sh_uid);
             
             
          }catch(SQLException e) {

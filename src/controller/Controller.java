@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import command.AjaxListCommand;
+import command.BookStatUpdateCommand;
 import command.BookingCommand;
 import command.ChangeShopInfoCommand;
 import command.ChangeUserInfoCommand;
@@ -156,6 +157,8 @@ public class Controller extends HttpServlet {
 		// 손님-예약내역
 		case "/usertest.bbq":
 			System.out.println("debug용");
+			command = new BookStatUpdateCommand();
+			command.execute(request, response);
 			command = new ShowBookuserCommand();
 			command.execute(request, response);
 			viewPage = "/book/usertest.jsp";
@@ -174,6 +177,8 @@ public class Controller extends HttpServlet {
 			
 		// 손님-예약내역
 		case "/book/usertest.bbq":
+			command = new BookStatUpdateCommand();
+			command.execute(request, response);
 			viewPage = "/book/usertest.jsp";
 			break;
 
@@ -374,6 +379,8 @@ public class Controller extends HttpServlet {
 			
 		// 매장-예약내역
 		case "/book/shoptest.bbq":
+			command = new BookStatUpdateCommand();
+			command.execute(request, response);
 			viewPage = "/book/shoptest.jsp";
 			break;
 			

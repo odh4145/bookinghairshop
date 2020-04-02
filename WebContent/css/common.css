@@ -55,3 +55,7 @@ ul.pagination a:hover:not(.active) {background-color: #eee;}
 .formBtn{
 	margin:15px auto;
 }
+
+.m_center{
+	margin:0 auto !important;
+}

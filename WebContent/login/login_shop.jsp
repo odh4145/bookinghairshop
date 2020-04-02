@@ -14,6 +14,23 @@
 <link href="../css/menu.css" rel="stylesheet" type="text/css">
 <link href="../css/login.css" rel="stylesheet" type="text/css">
 
+	
+<!-- javascript 링크 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../js/public.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+	var menu = 52;
+	var dHeight = $(document).height() - menu;
+	
+	$(document).resize(function() {
+		dHeight = $(document).height() - menu;
+	});
+	
+	$("section").css('min-height', dHeight);
+});
+</script>
 </head>
 
 <!-- form 검증 -->
@@ -113,26 +130,21 @@ function chkShopSubmit(){
 
 
 <section>
-
  	<c:choose>
 		<c:when test="${sessionScope.shop == null }">
-	
-	
-		<!-- 로그인 -->
+			<!-- 로그인 -->
 			<div id="login_shop">
 				<h3>Sign In</h3>
 				<a id="login_p2"><i class="fas fa-cut"></i></a>
 				<form name="frm_shop" action="login_shop_ok.bbq" method="post" onsubmit="return chkShopSubmit()">
-				<ul>
-					<li><input id="sh_id" type="text" name="sh_id" placeholder="ID"></li>
-					<li><input id="sh_pw" type="password" name="sh_pw" placeholder="PASSWORD"></li>
-					<li><input type="submit" id="btn" value="Sign In"/></li>
-					<li><a id= "join" href="../join/join_shop.bbq">Join</a></li>
-				</ul>
-			</form>
-			
-		</div>
-			
+					<ul>
+						<li><input id="sh_id" type="text" name="sh_id" placeholder="ID"></li>
+						<li><input id="sh_pw" type="password" name="sh_pw" placeholder="PASSWORD"></li>
+						<li><input type="submit" id="btn" value="Sign In"/></li>
+						<li><a id= "join" href="../join/join_shop.bbq">Join</a></li>
+					</ul>
+				</form>	
+			</div>			
 		</c:when>
 		
 		<c:when test="${sessionScope.shop != null }">
@@ -140,22 +152,7 @@ function chkShopSubmit(){
 				location.href="../book/shop.bbq?sh_uid=${sessionScope.shop }";
 			</script>
 		</c:when>
-
-</c:choose>
-		
-		
-	</div>
+	</c:choose>
 </section>
-	
-
-	
-
-
-	
-
-	
-<!-- javascript 링크 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../js/public.js" type="text/javascript"></script>
 </body>
 </html>

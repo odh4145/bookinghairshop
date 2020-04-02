@@ -130,7 +130,7 @@
 				<div class="information">
 					<p>
 						<i class="fas fa-phone"></i>${info[0].sh_telephone }<br>
-						<i class="fas fa-map-marker-alt"></i>${info[0].sh_location }<br>
+						<i class="fas fa-map-marker-alt"></i>${info[0].sh_location} ${info[0].sh_location_d}<br>
 						<i class="fas fa-clock"></i>
 						${info[0].sh_starttime }:00 - ${info[0].sh_endtime }:00<br>
 						${info[0].sh_hello }

@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -104,9 +105,9 @@
 								<c:if test="${book.bo_stat == 3 }">
 									<li class="test">지난 예약입니다.</li>
 								</c:if>
-								<li>예약시간 : ${book.bo_time}</li>
+								<li>예약시간 : <fmt:formatDate value="${book.bo_time}"  pattern="yyyy-MM-dd HH:mm"/></li>
 								<li>매장이름 : ${book.sh_name}</li>
-								<li>위치 : ${book.sh_location}</li>
+								<li>예약내역 : ${book.bo_service}</li>
 								<li>매장번호 : ${book.sh_telephone}</li>
 								<form action="delete.book.bbq" class="formBtn">
                            <input type="hidden" name="bo_uid" value="${book.bo_uid }">

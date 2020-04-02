@@ -48,13 +48,13 @@ public class BookShopDAO implements K {
 		ArrayList<BookShopDTO> list = new ArrayList<BookShopDTO>();
 		
 		while (rs.next()) {
+			String use_name = rs.getString("use_name");
 			String bo_service = rs.getString("bo_service");
-			
 			int bo_uid = rs.getInt("bo_uid");
 			int bo_stat = rs.getInt("bo_stat");
 			int sh_uid = rs.getInt("sh_uid");
 			Timestamp bo_time = rs.getTimestamp("bo_time");
-			BookShopDTO dto = new BookShopDTO(bo_uid, bo_time, bo_service,
+			BookShopDTO dto = new BookShopDTO(use_name, bo_uid, bo_time, bo_service,
 					bo_stat, sh_uid);
 			list.add(dto);
 		}
@@ -82,7 +82,7 @@ public class BookShopDAO implements K {
 		return arr;
 	};
 	
-	//stat 변경하기
+	//stat 2로 변경하기
 	public int update_stat (int bo_uid) throws SQLException{
 		int cnt = 0;
 		try {
@@ -94,6 +94,18 @@ public class BookShopDAO implements K {
 		}
 		return cnt;
 	}
+	
+	//stat 3으로 변경하기
+		public int update_stat_time() throws SQLException{
+			int cnt = 0;
+			try {
+				pstmt = conn.prepareStatement(K.SQL_BOOK_UPDATE_STAT_BY_BO_TIME);
+				cnt = pstmt.executeUpdate();
+			} finally {
+				close();
+			}
+			return cnt;
+		}
 	
 	//service에서 시간가져오기
 	public int serviceTime (int sh_uid, String name) throws SQLException{

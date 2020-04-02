@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -99,15 +100,18 @@
 							<li class="test">지난 예약입니다.</li>
 						</c:if>
 						
-						<li>${book_sh.bo_time}</li>
+						
+						<li>${book_sh.use_name}님</li>
+						<li><fmt:formatDate value="${book_sh.bo_time}"  pattern="yyyy-MM-dd HH:mm"/></li>
+						<li>${book_sh.bo_service}</li>
 						<div class="btnbox">
 						<c:if test="${book_sh.bo_stat == 1 }">
-							<form action="bookShopRadio.jsp">
+							<form action="bookShopRadio.jsp" style="margin:0 auto">
 								<input type="hidden" name="bo_uid" value="${book_sh.bo_uid }">
 								<input type="hidden" name="sh_uid" value="${book_sh.sh_uid }">
 								<input class="bbtn" type="submit" value='취소하기'/>
 							</form>
-							<form action="shopupdate.book.bbq">
+							<form action="shopupdate.book.bbq" style="margin:0 auto">
 								<input type="hidden" name="bo_uid" value="${book_sh.bo_uid }">
 								<input type="hidden" name="sh_uid" value="${book_sh.sh_uid }">
 								<input type="hidden" name="bo_service" value="${book_sh.bo_service }">
@@ -134,7 +138,6 @@
 		</div>
 		
 	</section>
-	
 </c:when>
 
 <c:when test="${sessionScope.shop == null }">

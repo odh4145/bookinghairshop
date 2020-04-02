@@ -123,20 +123,6 @@ public class BookDAO implements K {
 			}
 			return arr;
 		}
-	
-		// 예약 update_stat_by_time
-				public int update(int bo_uid) throws SQLException {
-					int cnt = 0;
-					try {
-						pstmt = conn.prepareStatement(K.SQL_BOOK_UPDATE_STAT_BY_BO_UID);
-						pstmt.setInt(1, bo_uid);
-						cnt = pstmt.executeUpdate();
-					} finally {
-						close();
-					}
-
-					return cnt;
-				};
 
 }
 

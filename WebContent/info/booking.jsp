@@ -3,6 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:choose>
 	<c:when test="${empty info || fn:length(info) == 0 }">
 		<script>
@@ -212,7 +213,7 @@ function sub() {
 						<ul class="price_info">
 							<input type="checkbox" onclick="serCheck(this)" name="ser_name" value="${dto2.ser_name }">
 							<li>${dto2.ser_name }</li>
-							<li>${dto2.ser_price }원</li>
+							<li><fmt:formatNumber value="${dto2.ser_price}" pattern="#,###,###"/>원</li>
 							<li><span>${dto2.ser_time }시간</span></li>
 						</ul>
 					</c:forEach>
@@ -224,13 +225,12 @@ function sub() {
 			<input type="hidden" name="bo_service" value="">
 			<input class="book" type="submit" value="예약신청하기" />
 		</form>
-		</div>
-
+		
 		<!-- 화살표버튼 -->
 		<div id="go_top">
 			<a><i class="fas fa-arrow-circle-up"></i></a>
 		</div>
-		</div>
+		</div>		
 	</section>
 	
 	</c:when>

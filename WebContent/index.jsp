@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="../img/favicon.png">
+<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.png">
 
 <!-- css파일 link -->
 <link href="css/index.css" rel="stylesheet" type="text/css">

@@ -15,6 +15,23 @@
 <link href="../css/login.css" rel="stylesheet" type="text/css">
 </head>
 
+<!-- javascript 링크 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="../js/public.js" type="text/javascript"></script>
+
+<script>
+$(document).ready(function(){
+	var menu = 52;
+	var dHeight = $(document).height() - menu;
+	
+	$(document).resize(function() {
+		dHeight = $(document).height() - menu;
+	});
+	
+	$("section").css('min-height', dHeight);
+});
+</script>
+
 <!-- form 검증 -->
 <script>
 function chkUserSubmit() {
@@ -117,15 +134,10 @@ function chkUserSubmit() {
 
 		</div>
 
-	</section>
-	
-	
+	</section>	
 	
 	</c:when>
 </c:choose>
 
-<!-- javascript 링크 -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="../js/public.js" type="text/javascript"></script>
 </body>
 </html>

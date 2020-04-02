@@ -22,7 +22,9 @@ public interface K {
 			"UPDATE BOOK SET bo_stat = 2 WHERE bo_uid = ?";
 	// sh_uid로 book 확인
 	public static final String SQL_BOOK_SELECT_BY_SHOP=
-			"SELECT * FROM book WHERE sh_uid = ? ORDER BY bo_time DESC";
+			"SELECT * FROM book b INNER JOIN user u" 
+			+"ON b.use_uid = u.use_uid"
+			+"WHERE sh_uid = ? ORDER BY bo_time DESC";
 	// use_uid book 확인
 	public static final String SQL_BOOK_JOIN_=
 			"SELECT * FROM book b JOIN shop s ON b.sh_uid = s.sh_uid JOIN `user` u ON u.use_uid = b.use_uid WHERE b.use_uid = ? ORDER BY bo_time DESC";
@@ -30,8 +32,8 @@ public interface K {
 	public static final String SQL_BOOK_DELETE_BO_UID=
 			"DELETE FROM BOOK WHERE bo_uid = ?";
 	// UPDATE stat --> 시간이 지난경우 stat을 3으로
-	public static final String SQL_BOOK_UPDATE_STAT_BY_BO_UID=
-				"UPDATE BOOK SET bo_stat = 3 WHERE bo_uid = ?";
+	public static final String SQL_BOOK_UPDATE_STAT_BY_BO_TIME=
+			"UPDATE BOOK SET bo_stat = 3 WHERE now() > bo_time + INTERVAL 3 HOUR";
 	// serviceTime가져오기
 	public static final String SQL_BOOK_SERVICE_TIME = 
 				"SELECT ser.ser_time FROM shop s JOIN service ser "
