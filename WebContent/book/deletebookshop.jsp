@@ -14,6 +14,6 @@
 <% } else { %>
 <script>
 	alert("예약을 삭제하셨습니다");
-	location.href = "${pageContext.request.contextPath}/book/shop.bbq?sh_uid=<%=uid%>";
+	location.href = "portfolio/book/shop.bbq?sh_uid=<%=uid%>";
 </script>
 <% } %>

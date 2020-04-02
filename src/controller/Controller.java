@@ -384,7 +384,7 @@ public class Controller extends HttpServlet {
 			viewPage = "/book/shoptest.jsp";
 			break;
 			
-			   // 매장 후기 검색
+		// 매장 후기 검색
         case "/hj/sortlist.bbq":
            command = new SelectShopNameCommand();
            command.execute(request, response);

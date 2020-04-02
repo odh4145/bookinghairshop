@@ -14,6 +14,6 @@
 <% } else { %>
 <script>
 	alert("예약을 삭제하셨습니다");
-	location.href = "/hairshop/book/user.bbq?use_uid=<%=uid%>";
+	location.href = "/portfolio/book/user.bbq?use_uid=<%=uid%>";
 </script>
 <% } %>
