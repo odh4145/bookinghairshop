@@ -10,10 +10,14 @@
 
 ### 맡은 역할
 - 역할 : 팀장
-- 기여도 : 40%
+- 기여도 : 45%
 - 전반적인 화면 디자인
-- 매장정보(고객버전, 매장버전) 및 매장정보 수정 기능
-- 예약하기 기능
+- 메뉴 및 메인, 지역별선택
+- 매장상세(고객버전, 매장버전), 매장정보 수정
+- 예약하기, 예약목록(고객버전, 매장버전)
+
+### 시연영상
+[![Video Label](http://img.youtube.com/vi/MSfRWwfJ1aA/0.jpg)(https://youtu.be/MSfRWwfJ1aA=0s)
 
 ### 사이트맵
 ![사이트맵](https://user-images.githubusercontent.com/59267825/73848716-fc4fa500-486b-11ea-8c04-c2b66b8c0c49.PNG)
