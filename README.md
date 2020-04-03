@@ -17,7 +17,7 @@
 - 예약하기, 예약목록(고객버전, 매장버전)
 
 ### 시연영상
-[![Video Label](http://img.youtube.com/vi/MSfRWwfJ1aA/0.jpg)(https://youtu.be/MSfRWwfJ1aA=0s)
+[![Video Label](http://img.youtube.com/vi/MSfRWwfJ1aA/0.jpg)](https://youtu.be/MSfRWwfJ1aA?t=0s)
 
 ### 사이트맵
 ![사이트맵](https://user-images.githubusercontent.com/59267825/73848716-fc4fa500-486b-11ea-8c04-c2b66b8c0c49.PNG)
